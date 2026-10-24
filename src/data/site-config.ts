@@ -1,5 +1,5 @@
 /** Configuration centrale du site (générée par new-site.py). */
-export const SITE_URL = "https://sg-car-cost.example";
+export const SITE_URL = "https://coecost.com";
 export const SITE_NAMES: Record<string, string> = {"en": "COE Cost", "zh": "新加坡拥车成本"};
 export const LANG_TAGS: Record<string, string> = {"en": "en-SG", "zh": "zh-SG"};
 export const OG_LOCALES: Record<string, string> = {"en": "en_SG", "zh": "zh_SG"};
@@ -16,7 +16,7 @@ export const AUTHOR_DESC: Record<string, string> = {"en": "Radif Partners rebuil
  *  themes reellement traites par le site, pas une liste de mots-cles : un sujet
  *  declare ici sans page qui le couvre est une declaration fausse. */
 export const KNOWS_ABOUT: Record<string, string[]> = {"en": ["Certificate of Entitlement (COE) bidding results", "Prevailing Quota Premium and COE renewal", "Additional Registration Fee tiers on Open Market Value", "PARF and COE rebates at deregistration", "Singapore road tax for petrol, hybrid and electric cars", "Vehicular Emissions Scheme and EV Early Adoption Incentive", "Car depreciation in Singapore"], "zh": ["拥车证竞标结果", "拥车证续期与预定市场价格（PQP）", "附加注册费分级", "注销时的 PARF 与拥车证回扣", "新加坡路税", "车辆排放计划与电动车奖励", "新加坡汽车折旧"]};
-export const CONTACT_EMAIL = "contact@sg-car-cost.example";
+export const CONTACT_EMAIL = "contact@coecost.com";
 export const THEME_COLOR = '#B3122E';
 export const LOGO_SYMBOL = 'COE';
 export const BING_VERIFY_CODE = '';

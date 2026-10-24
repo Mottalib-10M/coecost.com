@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /*?*
 
-Sitemap: https://sg-car-cost.example/sitemap-index.xml
+Sitemap: https://coecost.com/sitemap-index.xml
