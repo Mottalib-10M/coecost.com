@@ -2,7 +2,7 @@
 /** Méthode (chinois) : mêmes règles et mêmes chiffres que la page anglaise, tirés de params-2026.json et data.gov.sg. */
 import PageLayout from '../../layouts/PageLayout.astro';
 import { route } from '../../i18n/routes';
-import { srcLink, table } from '../../lib/helpers';
+import { srcLink, table, sourceList } from '../../lib/helpers';
 import { P, roadTaxAnnual } from '../../lib/engine/car-cost';
 import { FETCHED, LATEST, FIRST, EXERCISES, exName, day, money, pct, PQP_NEXT, PQP_OFFICIAL_LAST, monthYear, PARAMS_READ } from '../../lib/data';
 import { breadcrumbSchema, webPageSchema } from '../../lib/seo';
@@ -17,10 +17,10 @@ const arfRows = (rg: 'from2023' | 'pre2023') => { let prev = 0; return P.arf[rg]
 const parfRows = [0, 1, 2, 3, 4, 5].map((k) => [k === 0 ? '5年或以下' : `超过${4 + k}年至${5 + k}年`, p(P.parf.pre2023.rates[k]), `${p(P.parf.y2023to2026.rates[k])}（上限${m(P.parf.y2023to2026.cap)}）`, `${p(P.parf.from2026.rates[k])}（上限${m(P.parf.from2026.cap)}）`]);
 const ves = (['A', 'B', 'C1', 'C2', 'C3'] as const).map((b) => [b, m(P.ves[2026][b]), m(P.ves[2027][b])]);
 ---
-<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: '计算方法', description, path, lang }), breadcrumbSchema([{ name: '首页', path: route('home', lang) }, { name: '计算方法', path }])]} breadcrumbs={[{ label: '计算方法' }]}>
+<PageLayout sources={sourceList(['lta-tax', 'lta-arf', 'lta-ves', 'lta-coe', 'lta-renewal', 'lta-roadtax', 'lta-rebate', 'lta-parf-2026', 'mas-loans', 'iras-gst', 'dgs-coe', 'dgs-pqp', 'sodl'], lang)} title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: '计算方法', description, path, lang }), breadcrumbSchema([{ name: '首页', path: route('home', lang) }, { name: '计算方法', path }])]} breadcrumbs={[{ label: '计算方法' }]}>
   <article class="prose prose-slate max-w-none">
     <h1>数字是怎样算出来的</h1>
-    <p>本站的数字分两类。拥车证结果和预定市场价格是数据：每轮竞标后，程序从 data.gov.sg 读取陆路交通管理局发布的数据集（共 {EXERCISES.length} 轮，从{exName(FIRST, lang)}到{exName(LATEST, lang)}，读取于{day(FETCHED, lang)}）。税费与回扣是规则：于{day(PARAMS_READ, lang)}在陆路交通管理局网页上读取，写入一个参数文件，再由有自动化测试覆盖的计算引擎套用。您输入的内容不会离开浏览器。</p>
+    <p>本站的数字分两类。拥车证结果和预定市场价格是数据：每轮竞标后，程序从 data.gov.sg 读取陆路交通管理局的拥车证结果数据集和新加坡统计局的 PQP 数据集（数据来源：陆路交通管理局）（共 {EXERCISES.length} 轮，从{exName(FIRST, lang)}到{exName(LATEST, lang)}，读取于{day(FETCHED, lang)}）。税费与回扣是规则：于{day(PARAMS_READ, lang)}在陆路交通管理局网页上读取，写入一个参数文件，再由有自动化测试覆盖的计算引擎套用。您输入的内容不会离开浏览器。</p>
     <h2>新车的前期成本</h2>
     <p>根据<Fragment set:html={s('lta-tax', '车辆税务结构')} />，在新加坡关税局评定的公开市场价值（OMV）之上，依次加上：OMV 的 {p(P.exciseDutyRate)} 消费税；OMV 加消费税后的 {p(P.gstRate)} 商品及服务税（<Fragment set:html={s('iras-gst', '国内税务局')} />）；{m(P.registrationFee)} 的注册费；分级计算的附加注册费（ARF）；车辆排放计划（VES）的回扣或附加费，以及2026年注册的纯电动车可得的电动车早期采用奖励（EEAI）；最后是拥车证价格。进口二手车另加 {m(P.usedImportSurcharge)}。车行利润、保险和配件另计，没有任何机构公布。</p>
     <Fragment set:html={table(['OMV 区间', 'ARF 税率'], arfRows('from2023'), '2023年2月第二轮起取得拥车证的车辆所适用的 ARF 分级。', ['l', 'r'], lang)} />
@@ -40,7 +40,7 @@ const ves = (['A', 'B', 'C1', 'C2', 'C3'] as const).map((b) => [b, m(P.ves[2026]
     <h2>汽车贷款</h2>
     <p><Fragment set:html={s('mas-loans', '新加坡金融管理局')} />规定，OMV 不超过 {m(P.loans.lowOmv)} 时，汽车贷款最多为购车价（含税和拥车证）的 {p(P.loans.ltvLow)}，超过时为 {p(P.loans.ltvHigh)}，期限最长 {P.loans.maxYears} 年。银行报的是平息利率，计算器会把它换算成实际年利率。</p>
     <h2>许可与署名</h2>
-    <p>本站包含陆路交通管理局在 data.gov.sg 发布的“COE Bidding Results / Prices”和“Motor Vehicle Quota, Quota Premium and Prevailing Quota Premium”数据，依据<Fragment set:html={s('sodl', '新加坡开放数据许可证 1.0 版')} />使用。本站与陆路交通管理局无关，未获其认可。陆路交通管理局的网页只作链接，其文字、表格和逐款车型的成本清单均未转载。</p>
+    <p>本站包含2026年10月24日取自 data.gov.sg 的“COE Bidding Results / Prices”（陆路交通管理局）和“Motor Vehicle Quota, Quota Premium And Prevailing Quota Premium, Monthly”（新加坡统计局，数据来源：陆路交通管理局）数据，依据<Fragment set:html={s('sodl', '新加坡开放数据许可证 1.0 版')} />使用。本站与陆路交通管理局无关，未获其认可。陆路交通管理局、新加坡金融管理局和国内税务局的网页只注明机构、标题、网址与读取日期，不设链接，其文字、表格和逐款车型的成本清单均未转载。</p>
     <h2>局限</h2>
     <p>不预测下一轮价格。不提供逐款车型的 OMV。不含保险和油价。非高峰时段用车、德士、公司用车和货车各有规则，计算器未涵盖。2027年财政预算案或陆路交通管理局拥车证类别咨询带来的变化，将在公布当天更新。</p>
   </article>

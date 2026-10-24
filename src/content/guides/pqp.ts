@@ -43,7 +43,7 @@ ${h.mini('renew', { t: 'What renewing would cost you', p: ['cat', 'years'] })}
 <h2>Months without bidding</h2>
 <p>The average only counts months in which exercises were held. When bidding was suspended in April, May and June 2020, LTA based the PQP of May, June and July 2020 on the results of January, February and March 2020. The calculation used on this page follows the same rule, which is one of the reasons it matches the official series month for month.</p>
 <h2>Where the figures come from</h2>
-<p>The official monthly series is LTA’s data set on ${h.src('dgs-pqp', 'data.gov.sg')}, and the exercise results used for our calculation come from the ${h.src('dgs-coe', 'COE bidding results')} data set, both under the ${h.src('sodl', 'Singapore Open Data Licence')}. The renewal rules are on LTA’s ${h.src('lta-renewal', 'COE renewal page')}. When the official figure for ${monthYear(PQP_NEXT.appliesTo, 'en')} appears in the open data, the update script compares it with our calculation and stops if they differ, so a wrong figure cannot reach this page silently.</p>`,
+<p>The official monthly series is the Singapore Department of Statistics data set (source: LTA) on ${h.src('dgs-pqp', 'data.gov.sg')}, and the exercise results used for our calculation come from the ${h.src('dgs-coe', 'COE bidding results')} data set, both under the ${h.src('sodl', 'Singapore Open Data Licence')}. The renewal rules are on LTA’s ${h.src('lta-renewal', 'COE renewal page')}. When the official figure for ${monthYear(PQP_NEXT.appliesTo, 'en')} appears in the open data, the update script compares it with our calculation and stops if they differ, so a wrong figure cannot reach this page silently.</p>`,
   },
   zh: {
     slug: 'pqp', nav: 'PQP（预定市场价格）', card: '每月拥车证续期价格',
@@ -74,6 +74,6 @@ ${h.mini('renew', { t: '续期要花多少钱', p: ['cat', 'years'] })}
 <h2>没有竞标的月份</h2>
 <p>平均值只计算有举行竞标的月份。2020年4月、5月和6月暂停竞标时，陆路交通管理局以2020年1月、2月和3月的结果，计算2020年5月、6月和7月的 PQP。本页所用的计算遵循同一规则，这也是它能与官方序列逐月吻合的原因之一。</p>
 <h2>数字的来源</h2>
-<p>官方月度序列来自陆路交通管理局在 ${h.src('dgs-pqp', 'data.gov.sg')} 发布的数据集，本站计算所用的竞标结果来自${h.src('dgs-coe', '拥车证竞标结果')}数据集，两者都依据${h.src('sodl', '新加坡开放数据许可证')}使用。续期规则见陆路交通管理局的${h.src('lta-renewal', '拥车证续期页面')}。当${monthYear(PQP_NEXT.appliesTo, 'zh')}的官方数字出现在开放数据中时，更新程序会把它与本站的计算比较，一旦不同就会停止，所以错误的数字不会悄悄出现在本页上。</p>`,
+<p>官方月度序列来自新加坡统计局在 ${h.src('dgs-pqp', 'data.gov.sg')} 发布的数据集（数据来源：陆路交通管理局），本站计算所用的竞标结果来自${h.src('dgs-coe', '拥车证竞标结果')}数据集，两者都依据${h.src('sodl', '新加坡开放数据许可证')}使用。续期规则见陆路交通管理局的${h.src('lta-renewal', '拥车证续期页面')}。当${monthYear(PQP_NEXT.appliesTo, 'zh')}的官方数字出现在开放数据中时，更新程序会把它与本站的计算比较，一旦不同就会停止，所以错误的数字不会悄悄出现在本页上。</p>`,
   },
 });

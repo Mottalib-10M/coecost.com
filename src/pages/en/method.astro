@@ -2,7 +2,7 @@
 /** Method: every rule the calculators apply, with its source and the checks run on it. Figures from params-2026.json and data.gov.sg. */
 import PageLayout from '../../layouts/PageLayout.astro';
 import { route } from '../../i18n/routes';
-import { srcLink, table } from '../../lib/helpers';
+import { srcLink, table, sourceList } from '../../lib/helpers';
 import { P, roadTaxAnnual } from '../../lib/engine/car-cost';
 import { FETCHED, LATEST, FIRST, EXERCISES, exName, day, money, pct, PQP_NEXT, PQP_OFFICIAL_LAST, monthYear, PARAMS_READ } from '../../lib/data';
 import { breadcrumbSchema, webPageSchema } from '../../lib/seo';
@@ -17,10 +17,10 @@ const arfRows = (rg: 'from2023' | 'pre2023') => { let prev = 0; return P.arf[rg]
 const parfRows = [0, 1, 2, 3, 4, 5].map((k) => [k === 0 ? 'Up to 5 years' : `Over ${4 + k} to ${5 + k} years`, p(P.parf.pre2023.rates[k]), `${p(P.parf.y2023to2026.rates[k])} (cap ${m(P.parf.y2023to2026.cap)})`, `${p(P.parf.from2026.rates[k])} (cap ${m(P.parf.from2026.cap)})`]);
 const ves = (['A', 'B', 'C1', 'C2', 'C3'] as const).map((b) => [b, m(P.ves[2026][b]), m(P.ves[2027][b])]);
 ---
-<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: 'Method', description, path, lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'Method', path }])]} breadcrumbs={[{ label: 'Method' }]}>
+<PageLayout sources={sourceList(['lta-tax', 'lta-arf', 'lta-ves', 'lta-coe', 'lta-renewal', 'lta-roadtax', 'lta-rebate', 'lta-parf-2026', 'mas-loans', 'iras-gst', 'dgs-coe', 'dgs-pqp', 'sodl'], lang)} title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: 'Method', description, path, lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'Method', path }])]} breadcrumbs={[{ label: 'Method' }]}>
   <article class="prose prose-slate max-w-none">
     <h1>How the figures are built</h1>
-    <p>Two kinds of figures appear on this site. COE results and the prevailing quota premium are data: a script reads the Land Transport Authority’s data sets on data.gov.sg after each bidding exercise ({EXERCISES.length} exercises, from {exName(FIRST, lang)} to {exName(LATEST, lang)}, read on {day(FETCHED, lang)}). Taxes and rebates are rules: they were read on LTA’s pages on {day(PARAMS_READ, lang)}, written into one parameter file and applied by a calculation engine covered by automated tests. Nothing you type leaves your browser.</p>
+    <p>Two kinds of figures appear on this site. COE results and the prevailing quota premium are data: a script reads, on data.gov.sg, the Land Transport Authority’s COE results and the Singapore Department of Statistics PQP series (source: LTA) after each bidding exercise ({EXERCISES.length} exercises, from {exName(FIRST, lang)} to {exName(LATEST, lang)}, read on {day(FETCHED, lang)}). Taxes and rebates are rules: they were read on LTA’s pages on {day(PARAMS_READ, lang)}, written into one parameter file and applied by a calculation engine covered by automated tests. Nothing you type leaves your browser.</p>
     <h2>Upfront cost of a new car</h2>
     <p>The <Fragment set:html={s('lta-tax', 'vehicle tax structure')} /> adds, on top of the open market value (OMV) assessed by Singapore Customs: an excise duty of {p(P.exciseDutyRate)} of the OMV; GST of {p(P.gstRate)} on the OMV plus excise (<Fragment set:html={s('iras-gst', 'IRAS')} />); the registration fee of {m(P.registrationFee)}; the additional registration fee (ARF) in tiers; the VES rebate or surcharge and, for an electric car registered in 2026, the EEAI; and the COE premium. An imported used car pays a surcharge of {m(P.usedImportSurcharge)}. The dealer’s margin, insurance and accessories come on top and are not published by anyone.</p>
     <Fragment set:html={table(['OMV slice', 'ARF rate'], arfRows('from2023'), 'ARF tiers for COEs obtained from the 2nd exercise of February 2023.', ['l', 'r'], lang)} />
@@ -40,7 +40,7 @@ const ves = (['A', 'B', 'C1', 'C2', 'C3'] as const).map((b) => [b, m(P.ves[2026]
     <h2>Car loans</h2>
     <p>The <Fragment set:html={s('mas-loans', 'Monetary Authority of Singapore')} /> caps a car loan at {p(P.loans.ltvLow)} of the purchase price (taxes and COE included) when the OMV is up to {m(P.loans.lowOmv)}, and {p(P.loans.ltvHigh)} above it, over {P.loans.maxYears} years at most. Banks quote flat rates; the calculator converts them into an effective yearly rate.</p>
     <h2>Licence and attribution</h2>
-    <p>Contains information from COE Bidding Results / Prices and Motor Vehicle Quota, Quota Premium and Prevailing Quota Premium (Land Transport Authority) from data.gov.sg, made available under the terms of the <Fragment set:html={s('sodl', 'Singapore Open Data Licence version 1.0')} />. This site is not affiliated with or endorsed by LTA. LTA’s web pages are linked; their text, tables and model-by-model car cost list are not reproduced.</p>
+    <p>Contains information from COE Bidding Results / Prices (Land Transport Authority) and Motor Vehicle Quota, Quota Premium And Prevailing Quota Premium, Monthly (Singapore Department of Statistics, source: Land Transport Authority), accessed on 24 October 2026 from data.gov.sg, made available under the terms of the <Fragment set:html={s('sodl', 'Singapore Open Data Licence version 1.0')} />. This site is not affiliated with or endorsed by LTA. LTA’s, MAS’s and IRAS’s web pages are cited by organisation, title, address and date of reading, without a link; their text, tables and model-by-model car cost list are not reproduced.</p>
     <h2>Limits</h2>
     <p>No forecast of the next premium. No OMV per model. No insurance or petrol price. Off-peak cars, taxis, company cars and goods vehicles have rules of their own that the calculators do not cover. A change announced in Budget 2027 or after LTA’s consultation on COE categories will be applied the day it is published.</p>
   </article>

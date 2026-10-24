@@ -10,6 +10,7 @@
  * Contrôlé par scripts/check-seo.py (échec si < 3 liens officiels sur le pilier).
  */
 import P from '../data/params-2026.json';
+import { isRestricted, addressText } from '../lib/helpers';
 interface Props { lang: string }
 const { lang } = Astro.props;
 
@@ -37,7 +38,7 @@ const sources: Src[] = Object.values((P as { sources?: Record<string, Src> }).so
     <p>{INTRO[lang] ?? INTRO.en} {P.retrieved_at}.</p>
     <ul>
       {sources.map((s) => (
-        <li><a href={s.url} rel="nofollow noopener" target="_blank">{s.label[lang] ?? s.label.en}</a></li>
+        <li>{isRestricted(s.url) ? <span>{s.label[lang] ?? s.label.en}, <span style="overflow-wrap:anywhere">{addressText(s.url)}</span>, {P.retrieved_at}</span> : <a href={s.url} rel="nofollow noopener" target="_blank">{s.label[lang] ?? s.label.en}</a>}</li>
       ))}
     </ul>
   </>

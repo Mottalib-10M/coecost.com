@@ -111,4 +111,4 @@ ${h.mini('arf', { t: '按您的 OMV 计算附加注册费', p: ['omv'] })}
   ],
 };
 
-export const HOME: { en: HomeText; zh: HomeText; sources: string[] } = { en: EN, zh: ZH, sources: ['dgs-coe', 'lta-coe', 'lta-tax', 'lta-arf', 'lta-ves', 'lta-rebate', 'lta-parf-2026', 'lta-roadtax', 'lta-renewal', 'mas-loans', 'iras-gst', 'sodl'] };
+export const HOME: { en: HomeText; zh: HomeText; sources: string[] } = { en: EN, zh: ZH, sources: ['dgs-coe', 'dgs-pqp', 'lta-coe', 'lta-tax', 'lta-arf', 'lta-ves', 'lta-rebate', 'lta-parf-2026', 'lta-roadtax', 'lta-renewal', 'mas-loans', 'iras-gst', 'sodl'] };

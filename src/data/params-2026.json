@@ -90,14 +90,14 @@
       "url": "https://data.gov.sg/datasets/d_69b3380ad7e51aff3a7dcc84eba52b8a/view",
       "label": {
         "en": "data.gov.sg, COE Bidding Results / Prices (Land Transport Authority)",
-        "zh": "data.gov.sg：拥车证竞标结果与价格（陆路交通管理局）"
+        "zh": "data.gov.sg：COE Bidding Results / Prices（陆路交通管理局）"
       }
     },
     "dgs-pqp": {
       "url": "https://data.gov.sg/datasets/d_22094bf608253d36c0c63b52d852dd6e/view",
       "label": {
-        "en": "data.gov.sg, Motor Vehicle Quota, Quota Premium and Prevailing Quota Premium, Monthly",
-        "zh": "data.gov.sg：车辆配额、拥车证价格与预定市场价格（月度）"
+        "en": "data.gov.sg, Motor Vehicle Quota, Quota Premium And Prevailing Quota Premium, Monthly (Singapore Department of Statistics, source: Land Transport Authority)",
+        "zh": "data.gov.sg：Motor Vehicle Quota, Quota Premium And Prevailing Quota Premium, Monthly（新加坡统计局，数据来源：陆路交通管理局）"
       }
     },
     "sodl": {
