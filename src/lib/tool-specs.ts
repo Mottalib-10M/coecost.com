@@ -68,7 +68,7 @@ function cost(l: Lang, arg?: Args): ToolSpec {
       const rt = roadTaxAnnual({ fuel, cc, kw }).total;
       const total = price - parf - coeBack + (rt + n(v, 'other')) * years;
       return {
-        label: T(l, `Cost per year over ${num(years, l, 1)} years`, `${num(years, l, 1)}年内每年成本`),
+        label: T(l, `Cost per year over ${num(years, l, Number.isInteger(years) ? 0 : 1)} years`, `${num(years, l, Number.isInteger(years) ? 0 : 1)}年内每年成本`),
         value: m(total / years, l),
         sub: T(l, `${m(total / years / 12, l)} a month · ${catShort(cat, l)} COE`, `每月 ${m(total / years / 12, l)} · ${catShort(cat, l)}拥车证`),
         rows: [
