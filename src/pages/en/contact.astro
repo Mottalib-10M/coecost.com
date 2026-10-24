@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { contactPageSchema } from '../../lib/seo';
+const lang = 'en';
+const path = route('contact', lang);
+const description = 'Write to the publisher of COE Cost about a 2026 COE figure, a tax rule or a calculation that looks wrong. Email only: no form, no phone line, nothing to sell.';
+---
+<PageLayout title="Contact COE Cost 2026: Corrections, Sources, Questions" description={description} lang={lang} noindex={true} jsonLd={[contactPageSchema({ name: 'Contact', description, path, lang })]} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contact</h1>
+    <p>Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. There is no form and no phone line: one address, read by the people who maintain the data and the calculators.</p>
+    <h2>Messages that help</h2>
+    <ul>
+      <li>A premium, quota or PQP that differs from LTA’s figure: give the exercise and the category.</li>
+      <li>A result that looks wrong: give the page and the values you typed, or paste the share link of the calculator.</li>
+      <li>A rule that has changed (Budget announcement, new VES bands, new COE categories) with the official link.</li>
+    </ul>
+    <h2>What we cannot do</h2>
+    <p>We cannot look up a vehicle, bid for you, renew a COE or transfer a rebate. Those are done on LTA’s OneMotoring services with Singpass. We do not pass your message to a dealer, a bank or an insurer.</p>
+    <h2>Publisher</h2>
+    <LegalIdentity lang={lang} />
+    <p>See also the <a href={route('editorial', lang)}>editorial policy</a>.</p>
+  </div>
+</PageLayout>

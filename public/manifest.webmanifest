@@ -1,0 +1,21 @@
+{
+ "name": "COE Cost",
+ "short_name": "COE Cost",
+ "description": "Singapore car cost calculator: today's COE results, tiered ARF, VES, PARF and COE rebates, road tax and the real cost per year, in one tool and without sign-up.",
+ "start_url": "/en/",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#B3122E",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

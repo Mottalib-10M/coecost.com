@@ -1,0 +1,32 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { route } from '../../i18n/routes';
+import { AUTHOR_NAME, AUTHOR_DESC, CONTACT_EMAIL } from '../../data/site-config';
+import { srcLink } from '../../lib/helpers';
+import { FETCHED, LATEST, FIRST, exName, day, EXERCISES } from '../../lib/data';
+import { profilePageSchema, breadcrumbSchema } from '../../lib/seo';
+const lang = 'zh';
+const path = route('about', lang);
+const title = '新加坡拥车成本 2026：发布方、数据来源与独立性说明';
+const description = '2026年谁在运营本站：Radif Partners；拥车证结果在每轮竞标后取自 data.gov.sg，税费规则依据陆路交通管理局，不卖车、不收集电话。';
+const s = (k: string, t: string) => srcLink(k, lang, t);
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[profilePageSchema({ path, lang }), breadcrumbSchema([{ name: '首页', path: route('home', lang) }, { name: '关于本站', path }])]} breadcrumbs={[{ label: '关于本站' }]}>
+  <article class="prose prose-slate max-w-none">
+    <h1>关于新加坡拥车成本</h1>
+    <p>{AUTHOR_DESC.zh}</p>
+    <h2>为什么做这个网站</h2>
+    <p>在新加坡，一辆新车的标价由六七项不同的收费叠加而成，而车辆送去报废时能拿回多少钱，又取决于另外两条规则。拥车证结果并不难找，但通常只是一串价格；现有的计算器大多一次只算一项税费，买家要把数字从一页抄到另一页，仍然算不出每年到底花多少钱。还有一些列出结果的页面，主要目的是收集电话号码，用来卖车、推销贷款或保险。</p>
+    <p><strong>本站把整个计算串成一个工具：公开市场价值、消费税与商品及服务税、分级附加注册费、车辆排放计划与电动车奖励、最新一轮的拥车证价格、路税，最后是 PARF 与拥车证回扣，得出每年和每月的成本。拥车证数据在每轮竞标后从官方开放数据更新，网站不索取您的姓名或电话。</strong></p>
+    <h2>由谁发布</h2>
+    <p>本站由 {AUTHOR_NAME} 发布，这是一家根据公开数据制作计算器的公司。它不是陆路交通管理局，也不是车行、银行或保险公司；不卖车、不卖贷款或保单，不收佣金，页面上没有推广链接，也没有留资表格。</p>
+    <LegalIdentity lang="en" />
+    <h2>数据从哪里来</h2>
+    <p>从{exName(FIRST, lang)}到{exName(LATEST, lang)}共 {EXERCISES.length} 轮竞标的拥车证价格、配额与投标数，以及每月的预定市场价格（PQP），来自陆路交通管理局在 <Fragment set:html={s('dgs-coe', 'data.gov.sg')} /> 发布的数据集，读取日期为{day(FETCHED, lang)}，依据 <Fragment set:html={s('sodl', '新加坡开放数据许可证 1.0 版')} /> 使用。税费规则（附加注册费分级、排放等级、电动车奖励上限、路税公式、PARF 比例、拥车证回扣与续期规则）读取自陆路交通管理局的 <Fragment set:html={s('lta-tax', '车辆税务结构页面')} /> 及各计算器所链接的页面，写入计算器使用的参数文件。<a href={route('method', lang)}>计算方法</a>页面列出每条规则及其出处；<a href={route('editorial', lang)}>编辑方针</a>说明如何更正错误。</p>
+    <h2>本站不做什么</h2>
+    <p>本站无法查询您的车辆记录，不能告诉您某一款车的 OMV，也不能代您投标或续期。结果是依据公开规则得出的估算，一切以陆路交通管理局的查询服务、车行合同和银行文件上的金额为准。</p>
+    <h2>联系我们</h2>
+    <p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>：如发现数字与陆路交通管理局不符、规则已变更或计算有误，欢迎来信（中英文均可）。</p>
+  </article>
+</PageLayout>

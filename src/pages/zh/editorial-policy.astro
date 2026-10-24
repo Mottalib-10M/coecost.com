@@ -1,0 +1,21 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { route } from '../../i18n/routes';
+import { AUTHOR_NAME } from '../../data/site-config';
+const lang = 'zh';
+---
+<PageLayout title="新加坡拥车成本编辑方针 2026：来源与更正" description="本站2026年页面的编写方式：只用陆路交通管理局规则与 data.gov.sg 结果，数字由程序读取并注明日期，估算会标明，不收车行的钱。" lang={lang} noindex={true} breadcrumbs={[{ label: '编辑方针' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>编辑方针</h1>
+    <h2>什么算来源</h2>
+    <p>拥车证结果与预定市场价格以陆路交通管理局在 data.gov.sg 发布的数据集为准；税费规则以陆路交通管理局 OneMotoring 页面和新闻稿为准；汽车贷款上限以新加坡金融管理局为准；消费税税率以国内税务局为准。新闻、论坛或车行资料可以提醒我们规则有变，但在读到官方数字之前，我们不会发布。</p>
+    <h2>数字如何进入页面</h2>
+    <p>每轮竞标结束后，程序读取开放数据，把结果写入页面与计算器使用的文件；没有人手动输入价格。税费规则集中在一个参数文件里，并注明读取日期。陆路交通管理局的网页只作链接，从不复制或嵌入。</p>
+    <h2>估算</h2>
+    <p>尚未由陆路交通管理局公布的数字，例如官方序列尚未收录的下月 PQP，会标明是本站按该局规则计算的结果。本站从不预测下一轮拥车证价格。</p>
+    <h2>独立性</h2>
+    <p>{AUTHOR_NAME} 不从车行、平行进口商、银行、保险公司或报废场收取任何费用，页面上没有推广链接。本站与陆路交通管理局或任何政府机构无关，未获其认可，也不使用其标志。</p>
+    <h2>更正</h2>
+    <p>收到错误报告后，我们会在当天对照官方来源核实；如确实有误，即更正页面并更新日期。请通过<a href={route('contact', lang)}>联系页面</a>来信。</p>
+  </div>
+</PageLayout>

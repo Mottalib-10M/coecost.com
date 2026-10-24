@@ -1,0 +1,607 @@
+{
+  "_lisezmoi": "Tous les barèmes du site vivent ici, jamais en dur dans le code (RECETTE §4). Chaque valeur a été relue sur la page officielle citée le jour de retrieved_at. Les règles sont des faits publics (Road Traffic (Motor Vehicles, Registration and Licensing) Rules) réécrits par nous ; les pages OneMotoring ne sont ni copiées ni encadrées (conditions d'utilisation LTA, art. 6). Montants en SGD.",
+  "year": 2026,
+  "retrieved_at": "2026-10-24",
+  "sources": {
+    "lta-tax": {
+      "url": "https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/upfront-vehicle-costs/tax-structure.html",
+      "updated": "2026-09-14",
+      "label": {
+        "en": "LTA OneMotoring, Vehicle Tax Structure (page updated 14 September 2026)",
+        "zh": "陆路交通管理局 OneMotoring：车辆税务结构（2026年9月14日更新）"
+      }
+    },
+    "lta-coe": {
+      "url": "https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/upfront-vehicle-costs/certificate-of-entitlement--coe-.html",
+      "updated": "2026-10-06",
+      "label": {
+        "en": "LTA OneMotoring, Certificate of Entitlement (page updated 6 October 2026)",
+        "zh": "陆路交通管理局 OneMotoring：拥车证（2026年10月6日更新）"
+      }
+    },
+    "lta-schedule": {
+      "url": "https://onemotoring.lta.gov.sg/content/dam/onemotoring/Buying/PDF/COE/COE_Bidding_Schedule_for_Year_2026.pdf",
+      "label": {
+        "en": "LTA, Schedule of COE open bidding exercises, January to December 2026 (PDF)",
+        "zh": "陆路交通管理局：2026年拥车证公开竞标时间表（PDF）"
+      }
+    },
+    "lta-rebate": {
+      "url": "https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/rebates/parf-coe-rebate.html",
+      "updated": "2026-02-12",
+      "label": {
+        "en": "LTA OneMotoring, PARF and COE rebates",
+        "zh": "陆路交通管理局 OneMotoring：PARF 与拥车证回扣"
+      }
+    },
+    "lta-parf-2026": {
+      "url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2026/2/news-releases/revision-parf-rebate-schedule-cap.html",
+      "updated": "2026-02-12",
+      "label": {
+        "en": "LTA news release, Revision of the PARF rebate schedule and cap (12 February 2026)",
+        "zh": "陆路交通管理局新闻稿：PARF 回扣比例与上限调整（2026年2月12日）"
+      }
+    },
+    "lta-roadtax": {
+      "url": "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/ongoing-car-costs/road-tax.html",
+      "updated": "2025-09-24",
+      "label": {
+        "en": "LTA OneMotoring, Road Tax (renewal, prerequisites, late renewal fees)",
+        "zh": "陆路交通管理局 OneMotoring：路税（续缴、条件、逾期费）"
+      }
+    },
+    "lta-renewal": {
+      "url": "https://onemotoring.lta.gov.sg/content/onemotoring/home/owning/coe-renewal.html",
+      "updated": "2026-09-01",
+      "label": {
+        "en": "LTA OneMotoring, COE Renewal (page updated 1 September 2026)",
+        "zh": "陆路交通管理局 OneMotoring：拥车证续期（2026年9月1日更新）"
+      }
+    },
+    "lta-dereg": {
+      "url": "https://onemotoring.lta.gov.sg/content/onemotoring/home/selling-deregistering/deregister-a-vehicle.html",
+      "label": {
+        "en": "LTA OneMotoring, Deregister a Vehicle",
+        "zh": "陆路交通管理局 OneMotoring：车辆注销"
+      }
+    },
+    "lta-omv": {
+      "url": "https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/upfront-vehicle-costs/open-market-value--omv-.html",
+      "label": {
+        "en": "LTA OneMotoring, Open Market Value (OMV)",
+        "zh": "陆路交通管理局 OneMotoring：公开市场价值（OMV）"
+      }
+    },
+    "lta-arf": {
+      "url": "https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/upfront-vehicle-costs/additional-registration-fee--arf-.html",
+      "label": {
+        "en": "LTA OneMotoring, Additional Registration Fee (ARF)",
+        "zh": "陆路交通管理局 OneMotoring：附加注册费（ARF）"
+      }
+    },
+    "lta-ves": {
+      "url": "https://onemotoring.lta.gov.sg/content/onemotoring/home/buying/upfront-vehicle-costs/emissions-charges.html",
+      "label": {
+        "en": "LTA OneMotoring, Vehicle emission schemes (VES and EEAI)",
+        "zh": "陆路交通管理局 OneMotoring：车辆排放计划（VES 与 EEAI）"
+      }
+    },
+    "dgs-coe": {
+      "url": "https://data.gov.sg/datasets/d_69b3380ad7e51aff3a7dcc84eba52b8a/view",
+      "label": {
+        "en": "data.gov.sg, COE Bidding Results / Prices (Land Transport Authority)",
+        "zh": "data.gov.sg：拥车证竞标结果与价格（陆路交通管理局）"
+      }
+    },
+    "dgs-pqp": {
+      "url": "https://data.gov.sg/datasets/d_22094bf608253d36c0c63b52d852dd6e/view",
+      "label": {
+        "en": "data.gov.sg, Motor Vehicle Quota, Quota Premium and Prevailing Quota Premium, Monthly",
+        "zh": "data.gov.sg：车辆配额、拥车证价格与预定市场价格（月度）"
+      }
+    },
+    "sodl": {
+      "url": "https://data.gov.sg/open-data-licence",
+      "label": {
+        "en": "Singapore Open Data Licence, version 1.0",
+        "zh": "新加坡开放数据许可证 1.0 版"
+      }
+    },
+    "mas-loans": {
+      "url": "https://www.mas.gov.sg/regulation/explainers/motor-vehicle-loans",
+      "updated": "2024-06-27",
+      "label": {
+        "en": "Monetary Authority of Singapore, Motor vehicle loans (loan and tenure limits)",
+        "zh": "新加坡金融管理局：汽车贷款（贷款额与期限上限）"
+      }
+    },
+    "iras-gst": {
+      "url": "https://www.iras.gov.sg/taxes/goods-services-tax-%28gst%29/basics-of-gst/current-gst-rates",
+      "label": {
+        "en": "IRAS, Current GST rates",
+        "zh": "新加坡国内税务局：现行消费税税率"
+      }
+    }
+  },
+  "registrationFee": 350,
+  "exciseDutyRate": 0.2,
+  "gstRate": 0.09,
+  "gstFrom": "2024-01-01",
+  "usedImportSurcharge": 10000,
+  "arf": {
+    "pre2023": [
+      [
+        20000,
+        1.0
+      ],
+      [
+        50000,
+        1.4
+      ],
+      [
+        80000,
+        1.8
+      ],
+      [
+        null,
+        2.2
+      ]
+    ],
+    "from2023": [
+      [
+        20000,
+        1.0
+      ],
+      [
+        40000,
+        1.4
+      ],
+      [
+        60000,
+        1.9
+      ],
+      [
+        80000,
+        2.5
+      ],
+      [
+        null,
+        3.2
+      ]
+    ]
+  },
+  "parf": {
+    "pre2023": {
+      "rates": [
+        0.75,
+        0.7,
+        0.65,
+        0.6,
+        0.55,
+        0.5
+      ],
+      "cap": null
+    },
+    "y2023to2026": {
+      "rates": [
+        0.75,
+        0.7,
+        0.65,
+        0.6,
+        0.55,
+        0.5
+      ],
+      "cap": 60000
+    },
+    "from2026": {
+      "rates": [
+        0.3,
+        0.25,
+        0.2,
+        0.15,
+        0.1,
+        0.05
+      ],
+      "cap": 30000
+    }
+  },
+  "ves": {
+    "2026": {
+      "A": -22500,
+      "B": 0,
+      "C1": 7500,
+      "C2": 22500,
+      "C3": 35000
+    },
+    "2027": {
+      "A": -20000,
+      "B": 0,
+      "C1": 15000,
+      "C2": 30000,
+      "C3": 45000
+    },
+    "co2Bands": [
+      [
+        "A",
+        90
+      ],
+      [
+        "B",
+        120
+      ],
+      [
+        "C1",
+        159
+      ],
+      [
+        "C2",
+        182
+      ],
+      [
+        "C3",
+        null
+      ]
+    ],
+    "evEmissionFactor": {
+      "gPerWh": 0.4,
+      "from": "2017-07-01",
+      "to": "2027-12-31"
+    },
+    "revisedPeriod": {
+      "from": "2025-01-01",
+      "to": "2027-12-31"
+    }
+  },
+  "eeai": {
+    "rate": 0.45,
+    "caps": {
+      "2021": 20000,
+      "2022": 20000,
+      "2023": 20000,
+      "2024": 15000,
+      "2025": 15000,
+      "2026": 7500
+    },
+    "ends": "2026-12-31"
+  },
+  "minArf": 5000,
+  "evNoMinArfTo": 2027,
+  "roadTax": {
+    "factor": 0.782,
+    "ice": [
+      [
+        600,
+        200,
+        0,
+        600
+      ],
+      [
+        1000,
+        200,
+        0.125,
+        600
+      ],
+      [
+        1600,
+        250,
+        0.375,
+        1000
+      ],
+      [
+        3000,
+        475,
+        0.75,
+        1600
+      ],
+      [
+        null,
+        1525,
+        1,
+        3000
+      ]
+    ],
+    "ev": [
+      [
+        7.5,
+        200,
+        0,
+        7.5
+      ],
+      [
+        30,
+        200,
+        2,
+        7.5
+      ],
+      [
+        230,
+        250,
+        3.75,
+        30
+      ],
+      [
+        null,
+        1525,
+        10,
+        230
+      ]
+    ],
+    "evAfcSixMonthly": 350,
+    "ageSurcharge": [
+      [
+        14,
+        0.5
+      ],
+      [
+        13,
+        0.4
+      ],
+      [
+        12,
+        0.3
+      ],
+      [
+        11,
+        0.2
+      ],
+      [
+        10,
+        0.1
+      ]
+    ],
+    "lateFees": {
+      "cols": [
+        "within 1 month",
+        "1 to 2.5 months",
+        "more than 2.5 months",
+        "more than 3 months"
+      ],
+      "rows": [
+        [
+          1000,
+          10,
+          60,
+          80,
+          230
+        ],
+        [
+          1600,
+          20,
+          70,
+          90,
+          240
+        ],
+        [
+          2000,
+          30,
+          80,
+          100,
+          250
+        ],
+        [
+          3000,
+          40,
+          90,
+          110,
+          260
+        ],
+        [
+          null,
+          50,
+          100,
+          120,
+          270
+        ]
+      ],
+      "maxFine": 2000
+    },
+    "renewal": {
+      "prereqWorkingDays": 1,
+      "giroDeductWorkingDays": 5,
+      "giroScheduleMonths": 1,
+      "inspectionNoticeMonths": 3,
+      "noCashAtInspectionCentresFrom": "2025-02-01",
+      "discAbolished": "2017-02-15"
+    },
+    "typicalPetrolDutyPerYear": 1000
+  },
+  "motorcycle": {
+    "arf": [
+      [
+        5000,
+        0.15
+      ],
+      [
+        10000,
+        0.5
+      ],
+      [
+        null,
+        1.0
+      ]
+    ],
+    "exciseDutyRate": 0.12,
+    "ice": [
+      [
+        200,
+        40,
+        0,
+        200
+      ],
+      [
+        1000,
+        40,
+        0.15,
+        200
+      ],
+      [
+        null,
+        160,
+        0.3,
+        1000
+      ]
+    ],
+    "ev": [
+      [
+        10,
+        40,
+        0,
+        10
+      ],
+      [
+        96,
+        40,
+        1.4,
+        10
+      ],
+      [
+        null,
+        160,
+        2.4,
+        96
+      ]
+    ],
+    "evAfcSixMonthly": 100,
+    "bidDeposit": 1500,
+    "lateFees": {
+      "cols": [
+        "within 1 month",
+        "1 to 2.5 months",
+        "more than 2.5 months",
+        "more than 6 months"
+      ],
+      "rows": [
+        [
+          299,
+          10,
+          30,
+          50,
+          130
+        ],
+        [
+          null,
+          10,
+          60,
+          80,
+          230
+        ]
+      ]
+    },
+    "lifespan": {
+      "firstRegBefore": "2003-07-01",
+      "ends": "2028-06-30"
+    }
+  },
+  "coe": {
+    "catA": {
+      "maxCc": 1600,
+      "maxKw": 97,
+      "evMaxKw": 110
+    },
+    "bidDeposit": 10000,
+    "tcoeMonths": {
+      "A": 6,
+      "B": 6,
+      "C": 3,
+      "D": 1,
+      "E": 3
+    },
+    "schedule2026": [
+      [
+        "2026-11",
+        1,
+        "2026-11-02",
+        "2026-11-04"
+      ],
+      [
+        "2026-11",
+        2,
+        "2026-11-16",
+        "2026-11-18"
+      ],
+      [
+        "2026-12",
+        1,
+        "2026-12-07",
+        "2026-12-09"
+      ],
+      [
+        "2026-12",
+        2,
+        "2026-12-21",
+        "2026-12-23"
+      ]
+    ],
+    "renewalLateFees": [
+      [
+        1000,
+        50
+      ],
+      [
+        1600,
+        100
+      ],
+      [
+        2000,
+        150
+      ],
+      [
+        3000,
+        200
+      ],
+      [
+        null,
+        250
+      ]
+    ],
+    "motorcycleRenewalLateFee": 50,
+    "bankAdminFee": [
+      2,
+      10
+    ],
+    "oneMotoringRevisionFee": 2,
+    "minBidderAge": 18,
+    "depositRefundWorkingDays": 1
+  },
+  "rebates": {
+    "validMonths": 12,
+    "transferFee": 20,
+    "divideFee": 21.8,
+    "exportCapWithin2Years": 0.8,
+    "ltaExample": {
+      "paid": 16897,
+      "dereg": "2013-01-02",
+      "expiry": "2015-06-05"
+    }
+  },
+  "loans": {
+    "lowOmv": 20000,
+    "ltvLow": 0.7,
+    "ltvHigh": 0.6,
+    "maxYears": 7,
+    "since": "2016-05-27"
+  },
+  "pending": {
+    "en": [
+      "LTA is consulting the public on a new way to split cars between COE categories (COE page, 6 October 2026). Nothing changes until LTA decides.",
+      "The 2027 bidding schedule has not been published yet.",
+      "Budget 2027 (February 2027) may change ARF, VES or road tax; VES 2027 amounts are already published, and the EEAI ends on 31 December 2026."
+    ],
+    "zh": [
+      "陆路交通管理局正就拥车证车辆类别的新划分方式征求公众意见（拥车证页面，2026年10月6日）。在当局作出决定前，一切照旧。",
+      "2027年的竞标时间表尚未公布。",
+      "2027年财政预算案（2027年2月）可能调整附加注册费、车辆排放计划或路税；2027年的车辆排放计划金额已公布，电动车早期采用奖励于2026年12月31日结束。"
+    ]
+  },
+  "dereg": {
+    "proofMonths": 1,
+    "noProofFine": 2000,
+    "noProofJailMonths": 3,
+    "keepFine": 20000,
+    "keepJailYears": 2,
+    "epzMonths": 12,
+    "epzExportDocsDays": 14,
+    "nonParfDeliveryDays": 8,
+    "keepPlateMonths": 1
+  }
+}

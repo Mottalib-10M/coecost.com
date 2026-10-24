@@ -1,0 +1,33 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, CLARITY_ID, CONTACT_EMAIL, GA4_ID, LAST_UPDATED, LEGAL, SITE_NAMES, SITE_URL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'zh';
+const title = `法律声明 – ${SITE_NAMES[lang]}`;
+const description = '发布方、内容负责人、主机、非建议性质、知识产权、个人数据与适用法律。';
+---
+{/* Rédigée à la main sur le modèle de la page anglaise générée par scripts/gen-legal-pages.py. */}
+<PageLayout title={title} description={description} lang={lang} noindex={true} breadcrumbs={[{ label: '法律声明' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>法律声明</h1>
+    <p>关于 {SITE_URL} 的发布方与使用条件。如中英文版本有出入，以<a href={route('terms', 'en')} hreflang="en">英文版</a>为准。</p>
+    <h2>发布方</h2>
+    <LegalIdentity lang="en" />
+    <p>内容负责人：{AUTHOR_NAME}，对 {SITE_URL} 上发布的内容负责。</p>
+    <h2>主机</h2>
+    <LegalIdentity mode="hosting" lang="en" />
+    <h2>网站用途与非建议性质</h2>
+    <p>本站提供免费计算器与说明，仅供参考。结果是依据各页面所引用的官方规则与税率得出的估算，不构成个人建议，也不是任何机关的决定或承诺。方法与局限见<a href={route('method', lang)}>计算方法</a>。</p>
+    <h2>责任</h2>
+    <p>参数会更新，计算也会对照参考案例检验，但不保证没有错误。发布方不对仅凭估算作出的决定负责。发现错误请通过<a href={route('contact', lang)}>联系页面</a>告知。</p>
+    <h2>知识产权</h2>
+    <p>文字、设计与代码归发布方所有；欢迎附上原页面链接的简短引用。拥车证数据依据新加坡开放数据许可证 1.0 版使用。</p>
+    <h2>个人数据与 Cookie</h2>
+    {GA4_ID ? (<p>您在计算器中输入的内容留在浏览器中。本站设置 Google Analytics 访问统计 Cookie（最长13个月），不含广告{CLARITY_ID && '；页面稳定性以无 Cookie 的 Microsoft Clarity 监测'}。详情见<a href={route('privacy', lang)}>隐私政策</a>和 <a href={route('cookies', lang)}>Cookie</a> 页面。</p>) : (<p>您在计算器中输入的内容留在浏览器中，本站不设 Cookie{CLARITY_ID && '；页面稳定性以无 Cookie 的 Microsoft Clarity 匿名监测'}。见<a href={route('privacy', lang)}>隐私政策</a>和 <a href={route('cookies', lang)}>Cookie</a> 页面。</p>)}
+    <h2>举报内容</h2>
+    <p>如发现违法内容，请写信至 <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>，注明页面地址与理由。</p>
+    <h2>适用法律</h2>
+    <p>适用法国法律。协商不成时，由 {LEGAL.jurisdiction} 的管辖法院处理。最后更新：{LAST_UPDATED}。</p>
+  </div>
+</PageLayout>

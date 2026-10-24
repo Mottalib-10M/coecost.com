@@ -1,0 +1,74 @@
+name: Deploy to GitHub Pages
+
+# Push sur main : build et déploiement.
+# Cron lundi au jeudi 09:30 UTC (17:30 à Singapour) : relit les résultats COE et la PQP
+# sur data.gov.sg (Singapore Open Data Licence v1.0), contrôle, versionne les JSON modifiés,
+# puis reconstruit le site pour que la date de lecture et le dernier exercice soient à jour.
+on:
+  push:
+    branches: ['main']
+  schedule:
+    - cron: '30 9 * * 1-4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Update COE and PQP data
+        if: github.event_name != 'push'
+        run: node scripts/update-data.mjs
+
+      - name: Tests
+        run: npx vitest run
+
+      - name: Commit refreshed data
+        if: github.event_name != 'push'
+        run: |
+          if [ -n "$(git status --porcelain src/data)" ]; then
+            git config user.name 'Radif Partners'
+            git config user.email 'amradif@gmail.com'
+            git add src/data
+            git commit -m "Données COE et PQP relues sur data.gov.sg"
+            git push
+          fi
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

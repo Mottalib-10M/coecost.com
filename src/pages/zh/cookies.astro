@@ -1,0 +1,30 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { CLARITY_ID, CONTACT_EMAIL, GA4_ID, LAST_UPDATED, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'zh';
+const title = `Cookie – ${SITE_NAMES[lang]}`;
+const description = GA4_ID ? '只有 Google Analytics 的访问统计 Cookie：名称、用途、最长13个月的有效期、提供方以及如何拒绝。' : '本站不设 Cookie：您输入的内容留在浏览器中，设备上不保存任何东西。';
+---
+{/* Rédigée à la main sur le modèle de la page anglaise générée par scripts/gen-legal-pages.py. */}
+<PageLayout title={title} description={description} lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookie' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Cookie</h1>
+    {GA4_ID ? (<>
+    <p>本站只设置 Google Analytics 的访问统计 Cookie，没有广告 Cookie，也没有社交媒体 Cookie。处理详情见<a href={route('privacy', lang)}>隐私政策</a>。</p>
+    <h2>设置的 Cookie</h2>
+    <table><thead><tr><th>名称</th><th>提供方</th><th>用途</th><th>有效期</th></tr></thead><tbody>
+    <tr><td><code>_ga</code></td><td>Google Analytics</td><td>以随机标识区分访客</td><td>最长13个月（390天）</td></tr>
+    <tr><td><code>_ga_{GA4_ID.replace('G-', '')}</code></td><td>Google Analytics</td><td>保存当前访问的状态</td><td>最长13个月（390天）</td></tr>
+    </tbody></table>
+    <p>这些有效期不会在每次访问时延长。IP 地址经过匿名处理，不显示广告。提供方：Google Ireland Limited。法律依据：发布方的正当利益。可在浏览器设置中阻止或删除 Cookie，或安装 <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">Google Analytics 停用插件</a>。</p>
+    </>) : (<>
+    <p>本站<strong>不设任何 Cookie</strong>。处理详情见<a href={route('privacy', lang)}>隐私政策</a>。</p>
+    <p lang="en">This site sets no cookies and uses no analytics tool.</p>
+    </>)}
+    {CLARITY_ID && (<><h2>无 Cookie 的 Microsoft Clarity</h2><p>页面稳定性以无 Cookie 模式的 Microsoft Clarity 监测：不设 Cookie，每次浏览使用一次性标识，页面内容和您的输入均被遮盖。屏蔽 <code>clarity.ms</code> 即可停止。</p></>)}
+    <h2>您输入的内容</h2>
+    <p>计算在您的浏览器中进行：您输入的内容不会发送到任何服务器，关闭页面后即消失。</p>
+    <p>问题请写信至 <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>。最后更新：{LAST_UPDATED}。</p>
+  </div>
+</PageLayout>

@@ -1,0 +1,20 @@
+{
+ "accent": "#B3122E",
+ "symbol": "COE",
+ "variants": [
+  {
+   "file": "og-en.png",
+   "title": "What a car really costs\nin Singapore, per year",
+   "subtitle": "COE of the latest exercise · ARF · VES · PARF · road tax",
+   "badge": "COE results from data.gov.sg, October 2026",
+   "brand": "COE Cost"
+  },
+  {
+   "file": "og-zh.png",
+   "title": "新加坡买车\n每年到底花多少钱",
+   "subtitle": "最新拥车证 · 附加注册费 · PARF 回扣 · 路税",
+   "badge": "拥车证数据来自 data.gov.sg",
+   "brand": "新加坡拥车成本"
+  }
+ ]
+}

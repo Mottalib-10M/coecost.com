@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { contactPageSchema } from '../../lib/seo';
+const lang = 'zh';
+const path = route('contact', lang);
+const description = '就2026年拥车证数字、税费规则或计算结果联系新加坡拥车成本的发布方。只用电邮：没有表格、没有电话、不推销任何产品。';
+---
+<PageLayout title="联系新加坡拥车成本 2026：更正与来源" description={description} lang={lang} noindex={true} jsonLd={[contactPageSchema({ name: '联系', description, path, lang })]} breadcrumbs={[{ label: '联系' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>联系</h1>
+    <p>请写信至 <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>。本站没有表格，也没有电话：只有一个电邮地址，由负责数据与计算器的人员阅读。中英文来信均可。</p>
+    <h2>有帮助的来信</h2>
+    <ul>
+      <li>价格、配额或 PQP 与陆路交通管理局的数字不同：请注明轮次和类别。</li>
+      <li>计算结果看起来不对：请注明页面和您输入的数值，或附上计算器的分享链接。</li>
+      <li>规则已变更（财政预算案、新的排放等级、新的拥车证类别）：请附官方链接。</li>
+    </ul>
+    <h2>我们做不到的事</h2>
+    <p>我们无法查询车辆、代为投标、续期拥车证或转让回扣，这些须用 Singpass 在陆路交通管理局的 OneMotoring 办理。我们不会把您的来信转给车行、银行或保险公司。</p>
+    <h2>发布方</h2>
+    <LegalIdentity lang="en" />
+    <p>另见<a href={route('editorial', lang)}>编辑方针</a>。</p>
+  </div>
+</PageLayout>

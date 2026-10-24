@@ -1,0 +1,47 @@
+---
+/** Méthode (chinois) : mêmes règles et mêmes chiffres que la page anglaise, tirés de params-2026.json et data.gov.sg. */
+import PageLayout from '../../layouts/PageLayout.astro';
+import { route } from '../../i18n/routes';
+import { srcLink, table } from '../../lib/helpers';
+import { P, roadTaxAnnual } from '../../lib/engine/car-cost';
+import { FETCHED, LATEST, FIRST, EXERCISES, exName, day, money, pct, PQP_NEXT, PQP_OFFICIAL_LAST, monthYear, PARAMS_READ } from '../../lib/data';
+import { breadcrumbSchema, webPageSchema } from '../../lib/seo';
+const lang = 'zh';
+const path = route('method', lang);
+const title = '新加坡拥车成本计算方法 2026：附加注册费、排放计划、PARF 与路税规则';
+const description = '本站2026年的计算方法：各计算器采用的陆路交通管理局规则、从 data.gov.sg 读取的拥车证结果、PQP 计算规则、与官方示例的核对，以及局限。';
+const s = (k: string, t: string) => srcLink(k, lang, t);
+const m = (x: number) => money(x, lang);
+const p = (x: number) => pct(x, lang, 0);
+const arfRows = (rg: 'from2023' | 'pre2023') => { let prev = 0; return P.arf[rg].map(([up, r]) => { const row = [up === null ? `${m(prev)}以上` : `${m(prev)}至${m(up)}`, p(r)]; prev = up ?? prev; return row; }); };
+const parfRows = [0, 1, 2, 3, 4, 5].map((k) => [k === 0 ? '5年或以下' : `超过${4 + k}年至${5 + k}年`, p(P.parf.pre2023.rates[k]), `${p(P.parf.y2023to2026.rates[k])}（上限${m(P.parf.y2023to2026.cap)}）`, `${p(P.parf.from2026.rates[k])}（上限${m(P.parf.from2026.cap)}）`]);
+const ves = (['A', 'B', 'C1', 'C2', 'C3'] as const).map((b) => [b, m(P.ves[2026][b]), m(P.ves[2027][b])]);
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: '计算方法', description, path, lang }), breadcrumbSchema([{ name: '首页', path: route('home', lang) }, { name: '计算方法', path }])]} breadcrumbs={[{ label: '计算方法' }]}>
+  <article class="prose prose-slate max-w-none">
+    <h1>数字是怎样算出来的</h1>
+    <p>本站的数字分两类。拥车证结果和预定市场价格是数据：每轮竞标后，程序从 data.gov.sg 读取陆路交通管理局发布的数据集（共 {EXERCISES.length} 轮，从{exName(FIRST, lang)}到{exName(LATEST, lang)}，读取于{day(FETCHED, lang)}）。税费与回扣是规则：于{day(PARAMS_READ, lang)}在陆路交通管理局网页上读取，写入一个参数文件，再由有自动化测试覆盖的计算引擎套用。您输入的内容不会离开浏览器。</p>
+    <h2>新车的前期成本</h2>
+    <p>根据<Fragment set:html={s('lta-tax', '车辆税务结构')} />，在新加坡关税局评定的公开市场价值（OMV）之上，依次加上：OMV 的 {p(P.exciseDutyRate)} 消费税；OMV 加消费税后的 {p(P.gstRate)} 商品及服务税（<Fragment set:html={s('iras-gst', '国内税务局')} />）；{m(P.registrationFee)} 的注册费；分级计算的附加注册费（ARF）；车辆排放计划（VES）的回扣或附加费，以及2026年注册的纯电动车可得的电动车早期采用奖励（EEAI）；最后是拥车证价格。进口二手车另加 {m(P.usedImportSurcharge)}。车行利润、保险和配件另计，没有任何机构公布。</p>
+    <Fragment set:html={table(['OMV 区间', 'ARF 税率'], arfRows('from2023'), '2023年2月第二轮起取得拥车证的车辆所适用的 ARF 分级。', ['l', 'r'], lang)} />
+    <Fragment set:html={table(['OMV 区间', 'ARF 税率'], arfRows('pre2023'), '在该轮之前取得拥车证的车辆所适用的 ARF 分级。', ['l', 'r'], lang)} />
+    <p>ARF 向上取整到元；以陆路交通管理局自己的车辆成本清单中的四行作核对，引擎得出的数字分毫不差。VES 等级取决于五种污染物中最差的一项；计算器请您选择等级，只能根据二氧化碳给出参考。扣除回扣后 ARF 不得低于 {m(P.minArf)}，但在 {P.evNoMinArfTo} 年或之前注册的纯电动车没有下限（<Fragment set:html={s('lta-ves', '排放计划')} />）。</p>
+    <Fragment set:html={table(['VES 等级', '2026年注册', '2027年注册'], ves, '负数为从 ARF 扣除的回扣，正数为附加费。', ['l', 'r', 'r'], lang)} />
+    <h2>拥车证结果与 PQP</h2>
+    <p>开放数据为每一轮、每一类别提供配额、收到的投标数、成功投标数，以及所有成功投标者都要支付的配额价格（<Fragment set:html={s('lta-coe', '竞标方式')} />）。A类包括 {P.catA.maxCc} cc 及 {P.catA.maxKw} kW 以下的非电动车，以及 {P.catA.evMaxKw} kW 以下的电动车（2022年5月起的拥车证）；B类为其余汽车；C类为货车与巴士；D类为摩托车；E类为开放类，除摩托车外均可使用。</p>
+    <p>预定市场价格（PQP）是最近三个有竞标的月份配额价格的移动平均，向上取整到元（<Fragment set:html={s('lta-renewal', '拥车证续期')} />）。用开放数据重算，自2002年以来每个月都与官方序列一致，没有一个例外。{monthYear(PQP_NEXT.appliesTo, lang)}的 PQP 以{PQP_NEXT.basedOn.map((x) => monthYear(x, lang)).join('、')}的价格为基础，在官方序列（目前截至{monthYear(PQP_OFFICIAL_LAST, lang)}）更新之前，标明为本站计算。续期10年支付 PQP 全额；续期5年支付一半，向上取整。</p>
+    <h2>路税</h2>
+    <p>每半年的路税按陆路交通管理局<Fragment set:html={s('lta-roadtax', '路税页面')} />上的公式计算，再乘以 {P.roadTax.factor}：汽油车按引擎排量，电动车按最大功率并每半年另加 {m(P.roadTax.evAfcSixMonthly)} 的附加固定费用，混合动力车取两者较高者。车龄超过10年的车多付 {p(0.1)}，此后每年增加十个百分点，超过14年为 {p(0.5)}。一辆 1,598 cc 的车每年路税为 {money(roadTaxAnnual({ fuel: 'petrol', cc: 1598 }).total, lang, 2)}。</p>
+    <h2>PARF 与拥车证回扣</h2>
+    <Fragment set:html={table(['注销时车龄', '2023年2月前取得的拥车证', '2023年2月至2026年2月', '2026年2月起'], parfRows, 'PARF 回扣占实际所付 ARF 的比例，按取得拥车证的轮次区分。', ['l', 'r', 'r', 'r'], lang)} />
+    <p>PARF 回扣以扣除 VES 和 EEAI 后实际所付的 ARF 计算（<Fragment set:html={s('lta-rebate', 'PARF 与拥车证回扣')} />；新比例见<Fragment set:html={s('lta-parf-2026', '2026年2月12日的新闻稿')} />）。拥车证回扣等于所付价格乘以未用月数再除以120；未用月数从注销次日起按整月计算，剩余天数按三十分之一月计。陆路交通管理局的示例（$16,897、29.1个月、$4,097）是引擎的测试之一，2026年2月新闻稿中的两个例子也是。</p>
+    <h2>每年成本</h2>
+    <p>每年成本 =（购车价 − PARF 回扣 − 期满时的拥车证回扣 + 路税与您输入的使用费用 × 年数）÷ 年数。这假设车辆在期满时注销；在二手市场出售的车价高于回扣，但差额没有人公布。</p>
+    <h2>汽车贷款</h2>
+    <p><Fragment set:html={s('mas-loans', '新加坡金融管理局')} />规定，OMV 不超过 {m(P.loans.lowOmv)} 时，汽车贷款最多为购车价（含税和拥车证）的 {p(P.loans.ltvLow)}，超过时为 {p(P.loans.ltvHigh)}，期限最长 {P.loans.maxYears} 年。银行报的是平息利率，计算器会把它换算成实际年利率。</p>
+    <h2>许可与署名</h2>
+    <p>本站包含陆路交通管理局在 data.gov.sg 发布的“COE Bidding Results / Prices”和“Motor Vehicle Quota, Quota Premium and Prevailing Quota Premium”数据，依据<Fragment set:html={s('sodl', '新加坡开放数据许可证 1.0 版')} />使用。本站与陆路交通管理局无关，未获其认可。陆路交通管理局的网页只作链接，其文字、表格和逐款车型的成本清单均未转载。</p>
+    <h2>局限</h2>
+    <p>不预测下一轮价格。不提供逐款车型的 OMV。不含保险和油价。非高峰时段用车、德士、公司用车和货车各有规则，计算器未涵盖。2027年财政预算案或陆路交通管理局拥车证类别咨询带来的变化，将在公布当天更新。</p>
+  </article>
+</PageLayout>

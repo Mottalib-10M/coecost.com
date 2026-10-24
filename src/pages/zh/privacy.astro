@@ -1,0 +1,51 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CLARITY_ID, CONTACT_EMAIL, GA4_ID, LAST_UPDATED, LEGAL, SITE_NAMES, SITE_URL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'zh';
+const title = `隐私政策 – ${SITE_NAMES[lang]}`;
+const description = GA4_ID ? '使用带 Cookie 的 Google Analytics 统计访问量，不含广告；您输入的内容留在浏览器中；主机日志；您的权利与监管机构。' : '您输入的内容留在浏览器中，本站不设 Cookie；主机日志；本站的数据处理、您的权利与可联系的监管机构。';
+---
+{/* Rédigée à la main sur le modèle de la page anglaise générée par scripts/gen-legal-pages.py (le chinois n'y est pas géré) :
+     mêmes faits (durées, base juridique, prestataires). À mettre à jour en même temps que la page anglaise. */}
+<PageLayout title={title} description={description} lang={lang} noindex={true} breadcrumbs={[{ label: '隐私' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>隐私政策</h1>
+    <p>本页说明使用 {SITE_URL} 时个人数据的处理方式，依据欧盟《通用数据保护条例》（GDPR）第12至14条，以及适用于新加坡访客的《2012年个人数据保护法》（PDPA）。如中英文版本有出入，以<a href={route('privacy', 'en')} hreflang="en">英文版</a>为准。</p>
+    <h2>1. 数据控制者</h2>
+    <LegalIdentity lang="en" />
+    <p>有关您数据的任何问题：<a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>。由于不符合 GDPR 第37条的条件，本站未指定数据保护官。</p>
+    <h2>2. 您输入的内容留在浏览器中</h2>
+    <p>本站的计算在您的浏览器中进行。您输入的金额、日期和情况<strong>不会发送到任何服务器</strong>，不会被储存，也不与任何标识符关联。本站不要求注册，也不索取姓名或电邮。分享链接会把您的输入带在网址中，请只发给您选择的人。</p>
+    <h2>3. 进行的处理</h2>
+    <h3>主机访问日志</h3>
+    <p>主机会为每次请求记录 IP 地址、日期时间、所请求的页面、浏览器和来源页面。目的：服务安全与故障诊断。法律依据：发布方的正当利益（GDPR 第6(1)(f)条；在新加坡为 PDPA 附表一第三部分的正当利益例外）。保存期限：依主机自身政策。</p>
+    {GA4_ID ? (<>
+    <h3>使用 Google Analytics 统计访问量</h3>
+    <p>本站使用 Google Analytics 4 统计访问量，了解哪些页面有用：浏览的页面、来源页面、停留时间、设备与浏览器类型、大致国家和城市。为此会在您的设备上设置两个 Cookie：<code>_ga</code>（以随机标识区分访客）和 <code>_ga_{GA4_ID.replace('G-', '')}</code>（保存当前访问的状态），有效期最长13个月（390天），且不会在每次访问时延长。</p>
+    <p>IP 地址经过匿名处理：Google Analytics 4 不记录也不储存 IP 地址。发送给 Google Analytics 的网址去除了参数，分享链接中的输入不会被传送。本站不显示广告，广告存储、广告个性化和 Google 信号均已关闭。提供方：Google Ireland Limited，Gordon House, Barrow Street, Dublin 4, Ireland。在 Google 的保存期限：14个月。法律依据：发布方的正当利益。</p>
+    </>) : (<>
+    <h3>不进行访问统计</h3>
+    <p>本站不设 Cookie，也不使用任何统计或广告工具。</p>
+    <p lang="en">This site sets no cookies and uses no analytics tool.</p>
+    </>)}
+    {CLARITY_ID && (<>
+    <h3>使用无 Cookie 的 Microsoft Clarity 监测稳定性</h3>
+    <p>为发现错误、加载缓慢的页面和无反应的按钮，本站以无 Cookie 模式使用 Microsoft Clarity：不设 Cookie，每次浏览使用一次性标识，页面文字与您的输入均被遮盖。提供方：Microsoft Ireland Operations Limited。保存期限：页面记录30天，汇总数据最长13个月。</p>
+    </>)}
+    <h3>您寄来的信件</h3>
+    <p>如您写信到联系地址，您的电邮地址和信件会在回复及更正错误所需的期间内保存，最迟在最后一次往来后三年内删除。法律依据：发布方的正当利益。</p>
+    <h2>4. 接收方</h2>
+    <p>本站不出售、出租或转让任何数据。只有主机{GA4_ID && '、负责 Google Analytics 的 Google Ireland Limited'}{CLARITY_ID && '、负责 Clarity 的 Microsoft Ireland Operations Limited'}作为 GDPR 第28条所指的处理者可以接触数据。本站没有广告网络。</p>
+    <h2>5. 向欧盟以外传输</h2>
+    <p>主机日志可能在美国处理。{GA4_ID && 'Google Analytics 数据可能传输至美国的 Google LLC。'}{CLARITY_ID && 'Clarity 数据可能传输至美国的 Microsoft Corporation。'}这些传输依据欧盟－美国数据隐私框架及欧盟委员会的标准合同条款。</p>
+    <h2>6. 您的权利</h2>
+    <p>您享有 GDPR 第15至22条规定的查阅、更正、删除、限制处理、反对及数据可携权。请写信至 <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>，我们会在一个月内答复。由于本站没有用户账户，我们通常不持有能识别您身份的数据，届时也会如实告知。</p>
+    {GA4_ID && (<p>如不想被统计，可在浏览器设置中阻止或删除 Cookie，或安装 <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">Google Analytics 停用插件</a>，网站功能不受影响。</p>)}
+    <p>您可以向监管机构投诉：{LEGAL.supervisoryAuthority}（<a href={LEGAL.supervisoryAuthorityUrl} rel="nofollow noopener" target="_blank">{LEGAL.supervisoryAuthorityUrl}</a>）。在新加坡，您也可以联系个人数据保护委员会（PDPC）。</p>
+    <h2>7. 没有自动化决策</h2>
+    <p>计算结果是应您要求、根据您的输入、在您浏览器中得出的估算，没有法律效力，不属于 GDPR 第22条所指的自动化决策，也不进行用户画像。</p>
+    <p>另见 <a href={route('cookies', lang)}>Cookie</a> 页面。最后更新：{LAST_UPDATED}。</p>
+  </div>
+</PageLayout>
