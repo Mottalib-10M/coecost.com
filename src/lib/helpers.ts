@@ -30,6 +30,10 @@ export const sourceList = (keys: string[], lang: Lang): SourceItem[] => {
   const S = SOURCES(lang);
   return keys.map((k) => (S[k].linked ? { name: S[k].label, url: S[k].url } : { name: S[k].label, address: addressText(S[k].url), addressLabel: ADDRESS[lang], readOn: READ_ON[lang](day(READ_AT, lang)) }));
 };
+/** Une seule phrase au-dessus de la liste au lieu de « address, not linked » et de la date répétés sur chaque source (audit de Sami, 2026-10-28). */
+export const sourcesNote = (lang: Lang) => lang === 'zh'
+  ? `LTA、MAS 和 IRAS 页面上的规则和费率于${day(READ_AT, lang)}读取；这些网站的使用条款不允许链接，因此只列出网址。`
+  : `Rules and rates on the LTA, MAS and IRAS pages below were read on ${day(READ_AT, lang)}. Their terms of use do not allow links, so the address is given as text.`;
 /** Citation en texte (HTML) d'une source non liable. */
 export const citeHtml = (it: SourceItem) => `${it.name}, ${it.addressLabel} <span class="cite-address" style="overflow-wrap:anywhere">${it.address}</span>, ${it.readOn}`;
 export function table(headers: string[], rows: Array<Array<string | number>>, caption?: string, align: Array<'l' | 'r'> = [], lang: Lang = 'en') {
