@@ -1,8 +1,8 @@
 {
  "source": "https://data.gov.sg/datasets/d_22094bf608253d36c0c63b52d852dd6e/view",
  "licence": "https://data.gov.sg/open-data-licence",
- "attribution": "Contains information from Motor Vehicle Quota, Quota Premium And Prevailing Quota Premium, Monthly (SingStat, source LTA) accessed on 2026-11-03 from data.gov.sg which is made available under the terms of the Singapore Open Data Licence version 1.0 https://data.gov.sg/open-data-licence",
- "fetched": "2026-11-03",
+ "attribution": "Contains information from Motor Vehicle Quota, Quota Premium And Prevailing Quota Premium, Monthly (SingStat, source LTA) accessed on 2026-11-04 from data.gov.sg which is made available under the terms of the Singapore Open Data Licence version 1.0 https://data.gov.sg/open-data-licence",
+ "fetched": "2026-11-04",
  "note": "official[M] = PQP published after the 2nd exercise of month M (used for renewals in month M+1). computed[M] = our recalculation with the LTA rule (mean of the quota premiums of the last 3 months with bidding, rounded up); it matches official wherever both exist.",
  "official": {
   "2026-09": {
@@ -1783,17 +1783,6 @@
   }
  },
  "computed": {
-  "2024-11": {
-   "basedOn": [
-    "2024-09",
-    "2024-10",
-    "2024-11"
-   ],
-   "A": 98582,
-   "B": 109880,
-   "C": 72215,
-   "D": 9509
-  },
   "2024-12": {
    "basedOn": [
     "2024-10",
@@ -2048,17 +2037,6 @@
    "D": 11392
   }
  },
- "nextFromLatest": {
-  "appliesTo": "2026-11",
-  "basedOn": [
-   "2026-08",
-   "2026-09",
-   "2026-10"
-  ],
-  "A": 129883,
-  "B": 131819,
-  "C": 91814,
-  "D": 11392
- },
+ "nextFromLatest": null,
  "mismatches": []
 }
