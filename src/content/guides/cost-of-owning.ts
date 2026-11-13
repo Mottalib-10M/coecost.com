@@ -23,7 +23,7 @@ export default defineGuide({
     title: 'Cost of Owning a Car in Singapore 2026: Per Month and Year',
     description: 'Cost of owning a car in Singapore in 2026: depreciation after the PARF and COE rebates, road tax and your running costs, per month and year, for 3 to 10 years.',
     h1: 'The cost of owning a car, per month',
-    intro: `Depreciation net of the rebates you get back, road tax and the running costs you type in. COE at the ${exName(LATEST, 'en')} result, read on ${day(FETCHED, 'en')}.`,
+    intro: `The cost of owning a car in Singapore: depreciation net of the rebates you get back, road tax and the running costs you type in. COE at the ${exName(LATEST, 'en')} result, read on ${day(FETCHED, 'en')}.`,
     resume: `The largest cost of owning a car in Singapore is not petrol or parking but depreciation: the price paid minus what comes back when the car is deregistered. For the Category A car with an OMV of ${en(CAR_A.omv)}, bought at ${en(CAR_A.u.basicWithCoe)} before the dealer’s margin, depreciation and road tax come to ${en(a10.perYear)} a year, or ${en(a10.perMonth)} a month, when it is kept ten years and scrapped. Kept five years, it returns ${en(a5.parf + a5.coe)} in PARF and COE rebates, but the cost per year rises to ${en(a5.perYear)}, because the loss is spread over fewer years. Insurance, parking, petrol or charging, ERP, servicing and loan interest come on top. Nobody publishes reliable averages for those, so the calculator asks for your own figures, starting from an example you should replace. Under the PARF rules for COEs from February 2026, keeping a car to ten years has become the cheapest option per year in most cases.`,
     faqs: [
       { q: 'What is the monthly cost of owning a car in Singapore?', a: `For the Category A example, depreciation and road tax alone come to about ${en(a10.perMonth)} a month over ten years. Add your insurance, season parking, petrol, ERP and servicing, which depend on where you live and how much you drive. With a loan, add the interest as well; the car loan calculator gives it.` },
@@ -31,7 +31,7 @@ export default defineGuide({
       { q: 'What does depreciation mean for a Singapore car?', a: 'It is the price paid minus what the car is worth at the end. For a car scrapped at the end of the period, that end value is the PARF rebate plus the COE rebate. For a car sold on the used market it is the sale price, which is usually higher than the rebates but is not published anywhere.' },
     ],
     body: (h) => `
-<h2>Category A car, by years kept</h2>
+<h2>Cost of owning a Category A car, by years kept</h2>
 ${h.table(['Kept', 'Rebates at the end', 'Depreciation per year', 'With road tax, per year', 'Per month'], tab(rowsA), `OMV ${h.m(CAR_A.omv)}, ${num(CAR_A.cc, 'en')} cc, VES band B, price ${h.m(CAR_A.u.basicWithCoe)} with the latest Category A premium, PARF schedule for COEs from February 2026. Running costs not included.`, ['l', 'r', 'r', 'r', 'r'])}
 <h2>Larger car, by years kept</h2>
 ${h.table(['Kept', 'Rebates at the end', 'Depreciation per year', 'With road tax, per year', 'Per month'], tab(rowsB), `OMV ${h.m(CAR_B.omv)}, ${num(CAR_B.cc, 'en')} cc, VES band C1, price ${h.m(CAR_B.u.basicWithCoe)} with the latest Category B premium. Running costs not included.`, ['l', 'r', 'r', 'r', 'r'])}

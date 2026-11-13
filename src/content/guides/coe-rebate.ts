@@ -19,7 +19,7 @@ export default defineGuide({
     title: 'COE Rebate Calculator 2026: Unused Months and Export Cap',
     description: 'COE rebate in 2026: the prorated formula on the premium paid, how LTA counts unused months and days, Category E and renewed COEs, export cap, 12 month limit.',
     h1: 'COE rebate: the value of the unused months',
-    intro: `When a car is deregistered before its COE expires, LTA refunds the unused part of the certificate. Rules read on ${day(PARAMS_READ, 'en')}.`,
+    intro: `When a car is deregistered before its COE expires, LTA refunds the unused part of the certificate as a COE rebate. Rules read on ${day(PARAMS_READ, 'en')}.`,
     resume: `The COE rebate is the premium you paid for a ten year certificate, multiplied by the unused months and divided by 120. A COE bought at the latest Category A premium of ${en(A)} and given up with five years left returns ${en(coeRebate(A, 60))}; with two years left, ${en(coeRebate(A, 24))}. LTA counts the unused period in whole calendar months from the day after deregistration, then adds the remaining days as thirtieths of a month. In LTA’s own worked example, a certificate bought for ${en(X.paid)} and given up with ${num(xm, 'en', 1)} months left returns ${en(xr)}. For a renewed COE the base is the PQP paid; for a car registered on a Category E COE, it is the lower of the Category E premium and that of the car’s own category in the same exercise. A car exported within two years of registration gets at most ${Math.round(R.exportCapWithin2Years * 100)} percent of the premium. Rebates must be used within ${R.validMonths} months.`,
     faqs: [
       { q: 'How is the COE rebate calculated?', a: 'Premium paid times unused months divided by 120. The unused months are counted from the day after deregistration to the expiry date: first in whole calendar months, then the leftover days at thirty days to a month, rounded to one decimal. The result is rounded down to the dollar. The calculator applies the same rule to the months you enter.' },
@@ -27,7 +27,7 @@ export default defineGuide({
       { q: 'What COE rebate does a car on a Category E COE get?', a: `The lower of two amounts: the Category E premium actually paid, or the premium of the car’s own category in the same exercise. In the latest exercise, Category E closed at ${en(eA)} and Category A at ${en(A)}, so a Category A car registered on an E certificate from it would be refunded on ${en(Math.min(eA, A))}.` },
     ],
     body: (h) => `
-<h2>Rebate by months left, at the latest Category A premium</h2>
+<h2>COE rebate by months left, at the latest Category A premium</h2>
 ${h.table(['Months left', 'COE rebate', 'If exported within 2 years'], rows, `Premium paid: ${h.m(A)}. The export cap applies only to cars deregistered for export within two years of registration. Source: LTA PARF and COE rebates.`, ['l', 'r', 'r'])}
 <p>The rebate falls in a straight line: every month of use costs one hundred and twentieth of the premium. With the latest Category A premium, that is ${h.m(A / 120)} a month or ${h.m(A / 10)} a year. Unlike the PARF rebate, there are no steps: a few weeks more or less change the rebate by a few hundred dollars, not by thousands, so there is no single best date to deregister.</p>
 <h2>How the months are counted</h2>

@@ -21,7 +21,7 @@ export default defineGuide({
     title: `COE Results ${monthYear(LATEST.month, 'en')}: Premiums of All Five Categories`,
     description: `COE results of the ${exName(LATEST, 'en')}: premium, quota and bids for Categories A to E, change on the exercise before and every result since 2010.`,
     h1: 'COE results of every bidding exercise',
-    intro: `Premium, quota and bids for each category, from the latest exercise back to ${monthYear(FIRST.month, 'en')}. Read from LTA open data on ${day(FETCHED, 'en')}.`,
+    intro: `COE results for each category: premium, quota and bids, from the latest exercise back to ${monthYear(FIRST.month, 'en')}. Read from LTA open data on ${day(FETCHED, 'en')}.`,
     resume: `The ${exName(LATEST, 'en')} closed with a premium of ${en(A)} in Category A, ${en(B)} in Category B, ${en(premium(LATEST, 'C'))} in Category C, ${en(premium(LATEST, 'D'))} in Category D and ${en(E)} in the open Category E. ${ups.length ? `${listEn(ups)} rose against the ${exName(PREVIOUS, 'en')}` : 'No category rose'}${downs.length ? `, while ${listEn(downs)} fell` : ''}. Category A moved by ${signed(change('A'), 'en')} and Category B by ${signed(change('B'), 'en')}. Over the last six months of bidding, Category A stayed between ${en(s12.min)} and ${en(s12.max)}. The premium is the lowest successful bid: every successful bidder in the category pays it, whatever they bid. Competition was strongest in Category ${hiRatio}, with ${num(bidRatio(LATEST, hiRatio), 'en', 2)} bids for each certificate on offer. Pick any of the last 48 exercises in the calculator to see its five results side by side. ${nextEn}`,
     faqs: [
       { q: 'Where do these COE results come from?', a: `From the Land Transport Authority’s data set of COE bidding results on data.gov.sg, published under the Singapore Open Data Licence. A script reads it after each exercise and writes it into the site. The current file holds ${EXERCISES.length} exercises, the latest being the ${exName(LATEST, 'en')}, and was read on ${day(FETCHED, 'en')}.` },
@@ -30,7 +30,7 @@ export default defineGuide({
       { q: 'At what time are COE results released?', a: 'Bidding closes at 4 pm on the Wednesday of the exercise week. LTA publishes the results after the close, on OneMotoring and then in its open data. This page and every calculator on the site update once the open data set carries the new exercise, and the date at the top changes with them.' },
     ],
     body: (h) => `
-<h2>Results of the last six exercises</h2>
+<h2>COE results of the last six exercises</h2>
 ${h.table(['Exercise', ...CATS.map((c) => catShort(c, 'en'))], rowsEn, 'Quota premium by category. Source: LTA via data.gov.sg (Singapore Open Data Licence 1.0).', ['l', 'r', 'r', 'r', 'r', 'r'])}
 <p>Each line is one exercise; each column a category. Category A is for smaller cars, B for larger and more powerful ones, C for goods vehicles and buses, D for motorcycles and E is the open category whose certificate can register any vehicle except a motorcycle. ${h.a('coe-cat-a', 'Category A')} and ${h.a('coe-cat-b', 'Category B')} have pages of their own with longer series.</p>
 <h2>How to read one exercise</h2>
@@ -51,7 +51,7 @@ ${h.mini('bid', { t: 'Would your reserve price have cleared?', p: ['cat', 'reser
     title: `拥车证结果 ${monthYear(LATEST.month, 'zh')}：A至E类最新价格与历史`,
     description: `${exName(LATEST, 'zh')}拥车证结果：A至E类的价格、配额与投标数，与上一轮相比的变化，以及2010年以来每一轮的结果，读取自 data.gov.sg。`,
     h1: '每一轮拥车证竞标结果',
-    intro: `各类别的价格、配额与投标数，从最新一轮一直到${monthYear(FIRST.month, 'zh')}。于${day(FETCHED, 'zh')}从陆路交通管理局开放数据读取。`,
+    intro: `各类别的拥车证结果：价格、配额与投标数，从最新一轮一直到${monthYear(FIRST.month, 'zh')}。于${day(FETCHED, 'zh')}从陆路交通管理局开放数据读取。`,
     resume: `${exName(LATEST, 'zh')}竞标结束，A类价格为 ${zh(A)}，B类 ${zh(B)}，C类 ${zh(premium(LATEST, 'C'))}，D类 ${zh(premium(LATEST, 'D'))}，开放的E类 ${zh(E)}。与${exName(PREVIOUS, 'zh')}相比，${ups.length ? `${listZh(ups)}上涨` : '没有类别上涨'}${downs.length ? `，${listZh(downs)}下跌` : ''}；A类变动 ${signed(change('A'), 'zh')}，B类变动 ${signed(change('B'), 'zh')}。在最近六个月的竞标中，A类价格介于 ${zh(s12.min)} 至 ${zh(s12.max)} 之间。配额价格就是最低的成功出价：同一类别的所有成功投标者都按这个价格付款，与各自出价多少无关。这一轮竞争最激烈的是${hiRatio}类，每张拥车证有 ${num(bidRatio(LATEST, hiRatio), 'zh', 2)} 份投标。在计算器中选择最近48轮中的任何一轮，即可并排查看五个类别的结果，以及与前一轮相比的升跌。${nextZh}`,
     faqs: [
       { q: '这些拥车证结果从哪里来？', a: `来自陆路交通管理局在 data.gov.sg 发布的拥车证竞标结果数据集，依据新加坡开放数据许可证使用。程序在每轮竞标后读取数据并写入本站。目前的文件共有 ${EXERCISES.length} 轮，最新一轮是${exName(LATEST, 'zh')}，读取于${day(FETCHED, 'zh')}。如有疑问，以陆路交通管理局 OneMotoring 上的数字为准。` },
@@ -60,7 +60,7 @@ ${h.mini('bid', { t: 'Would your reserve price have cleared?', p: ['cat', 'reser
       { q: '拥车证结果几点公布？', a: '竞标在竞标周的星期三下午4时截止。陆路交通管理局在截止后公布结果，先在 OneMotoring 上，然后在开放数据中。开放数据集收录新一轮结果后，本页和所有计算器就会自动更新，页面顶部的读取日期也会随之改变。如果竞标周遇上公共假期，截止日期会顺延。' },
     ],
     body: (h) => `
-<h2>最近六轮的结果</h2>
+<h2>最近六轮的拥车证结果</h2>
 ${h.table(['轮次', ...CATS.map((c) => catShort(c, 'zh'))], rowsZh, '各类别配额价格。来源：陆路交通管理局，经 data.gov.sg（新加坡开放数据许可证 1.0 版）。', ['l', 'r', 'r', 'r', 'r', 'r'])}
 <p>每一行是一轮竞标，每一列是一个类别。A类为较小的汽车，B类为较大、功率较高的汽车，C类为货车和巴士，D类为摩托车，E类为开放类，其拥车证可用于摩托车以外的任何车辆。${h.a('coe-cat-a', 'A类')}和${h.a('coe-cat-b', 'B类')}各有专页，列出更长的序列和每年的变化。</p>
 <h2>怎样看一轮结果</h2>

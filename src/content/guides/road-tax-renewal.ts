@@ -33,7 +33,7 @@ export default defineGuide({
 <h2>Before you pay: three prerequisites</h2>
 <p>The renewal will be refused unless three checks pass. First, insurance: the policy must cover the whole period of road tax you are buying, including third party liability for death and bodily injury. Second, inspection: cars above a certain age must pass a periodic inspection, and LTA sends a notice about ${num(RN.inspectionNoticeMonths, 'en')} months before the road tax expires when one is due; a lost notice does not stop you from getting the car inspected at an authorised centre. Third, fines: outstanding fines or warrants with LTA, HDB, URA or the Traffic Police can block the renewal.</p>
 <p>All three must be in LTA’s records at least ${num(RN.prereqWorkingDays, 'en')} working day before you pay, so leave a margin before the expiry date. Weekend and off peak cars also need their plate seals inspected, and they can only renew for twelve months at a time.</p>
-<h2>Four ways to renew</h2>
+<h2>Four ways to renew road tax</h2>
 <p>Online on OneMotoring, every day except between midnight and 1 am, by Visa or Mastercard credit or debit card or by eNETS Debit. At AXS stations and AXS online channels, with the same hours. By GIRO, which renews automatically every six months unless you choose yearly. Or at an authorised road tax collection centre with the original documents; since ${day(RN.noCashAtInspectionCentresFrom, 'en')} the inspection centres no longer accept cash, cheques or cashier’s orders for road tax. Since ${day(RN.discAbolished, 'en')} no disc is issued, so a receipt or the validity record on OneMotoring is the proof.</p>
 ${h.mini('own', { t: 'Road tax inside the full cost of owning', p: ['price', 'years'] })}
 <h2>What changes the amount</h2>
@@ -49,7 +49,7 @@ ${h.table(['Engine', ...LF.cols.map(cap)], lfRows('en'), `Late fee for a private
     title: '路税续缴 2026：应付金额、续缴条件与逾期费用',
     description: '2026年新加坡路税续缴：六个月或十二个月要付多少、保险、验车和罚款三项续缴条件、网上与 GIRO 等四种续缴方式、按排量计算的逾期费用，以及最高罚款。',
     h1: '路税续缴：金额、步骤与逾期费',
-    intro: `要付多少钱、付款前要准备好什么，以及路税过期会怎样。规则于${day(PARAMS_READ, 'zh')}读取自陆路交通管理局路税页面。`,
+    intro: `路税续缴要付多少钱、付款前要准备好什么，以及路税过期会怎样。规则于${day(PARAMS_READ, 'zh')}读取自陆路交通管理局路税页面。`,
     resume: `一辆车龄四年、1,496 cc 的汽油车，续缴十二个月路税要付 ${zh(r12, 2)}，六个月为 ${zh(r6, 2)}；计算器可以算出任何排量、电机功率或车龄的金额，包括车龄超过十年的附加费。付款前至少 ${num(RN.prereqWorkingDays, 'zh')} 个工作日，必须准备好三件事：涵盖整个路税期间的保险、如需验车须已通过检验，以及没有欠陆路交通管理局、建屋发展局、市区重建局或交通警察的罚款。之后可以在 OneMotoring 网上、AXS 站、通过 GIRO 或在授权的路税收费中心续缴。逾期续缴要付逾期费，拖得越久越高，汽车从 ${zh(LF.rows[0][1] as number)} 到 ${zh(LF.rows[LF.rows.length - 1][4] as number)} 不等；保留或使用没有有效路税的车辆属于违法，最高可罚款 ${zh(LF.maxFine)}，车主还可能被控上法庭。在计算器中输入排量、车龄和过期月数，就能看到连同逾期费在内要付的总额。`,
     faqs: [
       { q: '车险快到期了，还能续缴路税吗？', a: '不能续缴保险没有涵盖的期间。保单必须在您所缴路税的整个期间内，涵盖第三方死亡和身体伤害责任。请先续保，等保险公司更新陆路交通管理局的记录，至少一个工作日后再续缴路税，否则付款会被拒绝，路税也可能因此逾期。具体以陆路交通管理局 OneMotoring 上的资料为准。' },
@@ -60,7 +60,7 @@ ${h.table(['Engine', ...LF.cols.map(cap)], lfRows('en'), `Late fee for a private
 <h2>付款之前：三项条件</h2>
 <p>除非通过三项检查，否则续缴会被拒绝。第一是保险：保单必须涵盖您所购买的整个路税期间，包括第三方死亡和身体伤害责任。第二是验车：达到一定车龄的汽车必须通过定期检验，需要验车时，陆路交通管理局会在路税到期前约 ${num(RN.inspectionNoticeMonths, 'zh')} 个月寄出通知；通知遗失也可以直接到授权检验中心验车。第三是罚款：欠陆路交通管理局、建屋发展局、市区重建局或交通警察的罚款或拘捕令，都可能阻止续缴。</p>
 <p>这三项必须在付款前至少 ${num(RN.prereqWorkingDays, 'zh')} 个工作日出现在陆路交通管理局的记录中，所以请在到期日前预留时间。周末用车和非高峰时段用车还要检查车牌封条，而且只能一次续缴十二个月。</p>
-<h2>四种续缴方式</h2>
+<h2>四种路税续缴方式</h2>
 <p>在 OneMotoring 网上续缴，每天开放，午夜至凌晨1时除外，可用 Visa 或万事达信用卡、借记卡，或 eNETS 借记付款。AXS 站和 AXS 网上渠道，开放时间相同。GIRO 会自动每六个月续缴一次，也可以选择每年一次。或者带着原始文件到授权的路税收费中心办理；自${day(RN.noCashAtInspectionCentresFrom, 'zh')}起，检验中心不再接受现金、支票或银行本票缴付路税。自${day(RN.discAbolished, 'zh')}起不再发放路税标签，收据或 OneMotoring 上的有效记录就是证明，也可以随时在网上下载或打印路税有效证明。</p>
 ${h.mini('own', { t: '路税在拥车总成本中占多少', p: ['price', 'years'] })}
 <h2>哪些因素改变金额</h2>

@@ -22,7 +22,7 @@ export default defineGuide({
     title: 'COE Bidding 2026: Reserve Price, Deposit, Dates and Rules',
     description: 'How COE bidding works in 2026: reserve price and current COE price, the deposit for each category, temporary COE validity, dates left this year, past results.',
     h1: 'How COE bidding works',
-    intro: 'What happens to your bid during the three days of an exercise, what it costs to take part, and how often a given reserve price would have been enough in the past.',
+    intro: 'What happens to your bid during the three days of a COE bidding exercise, what it costs to take part, and how often a given reserve price would have been enough in the past.',
     resume: `A COE bid is a reserve price: the most you are prepared to pay. During the three working days of an exercise the bidding system raises every bid in the running by one dollar steps up to its reserve, and the current COE price is always the highest losing bid plus one dollar. At the close, every bid at or above that price wins and pays it, so the quota premium is the same for all winners. To bid you need an account with DBS or POSB (ATM, individuals) or with DBS, UOB or Maybank online (companies and traders), and a deposit of ${en(C.bidDeposit)} for Categories A, B, C and E or ${en(P.moto.bidDeposit)} for Category D. Over the last 24 exercises a Category A reserve of ${en(probe)} would have won ${hit.hits} times. ${nextEn}`,
     faqs: [
       { q: 'Can I withdraw or lower a COE bid?', a: `No. Once the system accepts a bid, the deposit and the bank’s administration fee are taken and the bid stays in the exercise. You can only revise the reserve price upwards, in steps of one dollar, as many times as you like before the close. Each revision costs an administration fee: ${en(C.oneMotoringRevisionFee)} through OneMotoring, or the bank’s own fee at an ATM.` },
@@ -52,7 +52,7 @@ ${h.table(['Exercise', 'Opens (12 noon)', 'Closes (4 pm)'], schedEn, `Schedule p
     title: '拥车证竞标 2026：保留价、押金、竞标日期与规则',
     description: '2026年拥车证竞标怎样进行：保留价与当前拥车证价格如何变化、各类别押金多少、临时拥车证有效期、今年余下的竞标日期，以及您的保留价在过往各轮能否中标。',
     h1: '拥车证竞标怎样进行',
-    intro: '竞标三天里您的出价会经历什么、参加竞标要花多少钱，以及某个保留价在过去有多少次能够中标。',
+    intro: '拥车证竞标三天里您的出价会经历什么、参加竞标要花多少钱，以及某个保留价在过去有多少次能够中标。',
     resume: `拥车证投标就是一个保留价，即您愿意支付的最高金额。在一轮竞标的三个工作日里，系统会把所有仍在竞争中的投标以每次一元的幅度往上调，直到各自的保留价；当前拥车证价格始终等于最高的落选出价加一元。竞标截止时，所有等于或高于这个价格的投标都中标，并按这个价格付款，所以同一类别所有中标者的配额价格都一样。投标需要 DBS 或 POSB 账户（个人用提款机），或 DBS、UOB、Maybank 的网上银行（公司和车行），并缴付押金：A、B、C、E类为 ${zh(C.bidDeposit)}，D类为 ${zh(P.moto.bidDeposit)}。在最近24轮中，A类保留价定为 ${zh(probe)} 的话，有 ${hit.hits} 轮能够中标。${nextZh}`,
     faqs: [
       { q: '拥车证投标可以撤回或调低吗？', a: `不可以。系统一旦接受投标，就会扣除押金和银行行政费，投标会一直留在本轮。您只能以一元为单位调高保留价，在截止前可以调整任意多次。每次调整都要付行政费：通过 OneMotoring 为 ${zh(C.oneMotoringRevisionFee)}，在提款机调整则按银行自己的收费。所以提交前请确认类别和金额。` },
@@ -65,7 +65,7 @@ ${h.table(['Exercise', 'Opens (12 noon)', 'Closes (4 pm)'], schedEn, `Schedule p
 <p>提交投标时，您输入的是保留价，也就是愿付的最高金额。系统并不直接使用这个数字。它为每个类别维持一个当前拥车证价格，等于已落选的最高出价加 ${h.m(1)}，并在新投标进来时把所有仍在竞争中的投标每次调高一元。只要您的保留价不低于当前价格，投标就仍在竞争中。当前价格一旦超过您的保留价，状态就会变成“已被超越”，除非调高保留价，否则就会出局。</p>
 <p>当仍在竞争中的投标数量等于配额时，价格就停止上升。截止当天下午4时，所有等于或高于当前价格的投标都中标，这个价格就是本轮的配额价格。一个人出价 ${h.m(A + 20000)}，另一个人出价 ${h.m(A)}，只要都中标，付的钱完全一样。如果在截止价格上有几份同价投标，全部接受会超过配额，那么这些同价投标都不会中标，剩下的拥车证转到下个月对应的那一轮。陆路交通管理局的${h.src('lta-coe', '拥车证页面')}有一个例子说明这条规则。</p>
 ${h.mini('results', { t: '任何一轮的结果', p: ['ex', 'cat'] })}
-<h2>竞标开始前要准备什么</h2>
+<h2>拥车证竞标开始前要准备什么</h2>
 <p>个人在 DBS 或 POSB 提款机投标；公司和车行通过 DBS、UOB 或 Maybank 的网上银行投标。账户里必须有足够的押金：A、B、C、E类 ${h.m(C.bidDeposit)}，D类 ${h.m(P.moto.bidDeposit)}，另加银行行政费，陆路交通管理局说明一般为 ${h.m(C.bankAdminFee[0])} 至 ${h.m(C.bankAdminFee[1])}。个人须年满 ${C.minBidderAge} 岁，每一轮只能以自己的名字和账户投一次标。每次投标或调整被接受后，都会收到一个六位数的确认码，请妥善保管，因为在其他渠道调整出价时需要它。</p>
 <p>您可以用 Singpass 在 OneMotoring 上查看投标状态：仍在竞争中显示“已接受”，当前价格超过保留价后显示“已被超越”。竞标期间可以看到所有类别的当前价格，所以在最后一个下午留意价格的人，很少会对截止价格感到意外，大多数调整也是在那时进行的。</p>
 <h2>结果公布之后</h2>

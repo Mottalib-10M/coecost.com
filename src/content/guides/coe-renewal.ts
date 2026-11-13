@@ -26,7 +26,7 @@ export default defineGuide({
     title: `COE Renewal ${mo('en')}: 5 or 10 Year Cost and Late Fees`,
     description: `COE renewal cost for ${mo('en')}: the PQP by category, 5 or 10 years, the PARF rebate you give up, late renewal fees for 2026 and when scrapping costs less.`,
     h1: 'COE renewal: cost and choices',
-    intro: `What it costs to keep a car beyond ten years, at the PQP for ${mo('en')}. Figures read on ${day(FETCHED, 'en')}.`,
+    intro: `What it costs to keep a car beyond ten years through a COE renewal, at the PQP for ${mo('en')}. Figures read on ${day(FETCHED, 'en')}.`,
     resume: `Renewing a Category A COE in ${mo('en')} costs ${en(renewalCost(PQP_NEXT.A, 10))} for ten years or ${en(renewalCost(PQP_NEXT.A, 5))} for five; in Category B it is ${en(renewalCost(PQP_NEXT.B, 10))} or ${en(renewalCost(PQP_NEXT.B, 5))}. That price is the prevailing quota premium, the three month average of COE results, and you pay it without bidding. The cash price is only part of the cost. A car deregistered at ten years still collects its PARF rebate, and renewing gives it up for good: for a car whose COE dates from before February 2023 and whose ARF was ${en(arf)}, that is ${en(parfLost)}. Counting it, a ten year renewal costs about ${en(r10.perYear)} a year and a five year renewal ${en(r5.perYear)} a year, against roughly ${en(CAR_A.perYear10)} a year for a new Category A car kept ten years. A five year renewal of a car cannot be repeated.`,
     faqs: [
       { q: 'When can I renew my COE?', a: 'In the month the COE expires, at that month’s PQP, or one month earlier at the previous month’s PQP, in which case the new period starts on the first day of the following month and the remaining days are forfeited. Renewal is done online on OneMotoring with Singpass, paid by eNETS Debit or, for larger amounts, SGQR PayNow.' },
@@ -45,7 +45,7 @@ ${h.mini('parf', { t: 'The PARF you would give up', p: ['arf', 'regime'], d: { a
 <h2>Late renewal fees</h2>
 ${h.table(['Private car engine', 'Late renewal fee'], lateRows('en'), `Late fee for renewing a COE within one month after expiry. Motorcycles: ${h.m(PARAMS.coe.motorcycleRenewalLateFee)}; company cars, goods and public service vehicles: ${h.m(coeRenewalLateFee(9999))}. Source: LTA COE renewal page.`, ['l', 'r'])}
 <p>The fee is small next to the PQP, but the rule behind it is strict: a COE that has expired leaves the car deregistered, so it cannot be driven until the renewal goes through, and after one month it must be scrapped or exported. The PQP charged is that of the month of expiry, not the month you finally pay.</p>
-<h2>Paying for the renewal</h2>
+<h2>Paying for the COE renewal</h2>
 <p>Renewal is an online transaction on OneMotoring, open every day except between midnight and 6 am. Personal account holders pay by eNETS Debit, within the daily limit set by their bank, and a PQP above the bank limits can be paid by SGQR PayNow. A COE rebate from another vehicle you have deregistered can be used to offset the PQP of a car you own, as long as the rebate is still within its twelve months of validity; if the rebate is larger than the PQP, encash it first and pay the renewal separately, because any balance left in an offset is forfeited.</p>
 <h2>Which PQP and which category</h2>
 <p>Every car renews at the PQP of its own category. A car first registered with an open Category E COE renews under Category A or B according to its engine and power, and a weekend or off peak car pays the same PQP as a normal car and keeps its status. The figure for ${mo('en')} on this page is our calculation with LTA’s rule, explained on the ${h.a('pqp', 'PQP page')}, until the official series is updated. If you would rather sell, the ${h.a('scrap-car', 'scrapping guide')} lists what you get back and the steps involved.</p>`,
@@ -55,7 +55,7 @@ ${h.table(['Private car engine', 'Late renewal fee'], lateRows('en'), `Late fee 
     title: `拥车证续期 ${mo('zh')}：五年或十年费用与逾期费`,
     description: `${mo('zh')}拥车证续期费用：各类别 PQP、续期五年或十年、续期时放弃的 PARF 回扣、2026年逾期续期费用，以及什么情况下报废更划算。`,
     h1: '拥车证续期：费用与选择',
-    intro: `按${mo('zh')}的 PQP，计算车辆在十年后继续使用要花多少钱。数字读取于${day(FETCHED, 'zh')}。`,
+    intro: `按${mo('zh')}的 PQP，计算拥车证续期、让车辆在十年后继续使用要花多少钱。数字读取于${day(FETCHED, 'zh')}。`,
     resume: `${mo('zh')}为A类拥车证续期，十年要付 ${zh(renewalCost(PQP_NEXT.A, 10))}，五年要付 ${zh(renewalCost(PQP_NEXT.A, 5))}；B类则为 ${zh(renewalCost(PQP_NEXT.B, 10))} 或 ${zh(renewalCost(PQP_NEXT.B, 5))}。这个价格就是预定市场价格，即拥车证结果的三个月平均值，不必投标就能支付。现金只是成本的一部分。车辆在十年时注销，仍可领取 PARF 回扣，续期则会永久放弃这笔钱：一辆在2023年2月之前取得拥车证、当初附加注册费为 ${zh(arf)} 的车，放弃的就是 ${zh(parfLost)}。把这一项算进去，续期十年每年约 ${zh(r10.perYear)}，续期五年每年约 ${zh(r5.perYear)}；相比之下，一辆新的A类车用满十年每年约 ${zh(CAR_A.perYear10)}。汽车续期五年只能一次，期满后必须注销。在计算器中输入您的车辆类别和当初所付的附加注册费，即可比较续期与报废。`,
     faqs: [
       { q: '什么时候可以为拥车证续期？', a: '可以在拥车证到期的那个月按当月 PQP 续期，也可以提早一个月按上个月的 PQP 续期；后者的新期限从下个月第一天开始，剩下的天数会作废。续期在 OneMotoring 网上用 Singpass 办理，可以用 eNETS 借记付款，金额较大时用 SGQR PayNow 付款。' },
@@ -74,7 +74,7 @@ ${h.mini('parf', { t: '您会放弃的 PARF', p: ['arf', 'regime'], d: { age: 10
 <h2>逾期续期费用</h2>
 ${h.table(['私家车引擎排量', '逾期续期费'], lateRows('zh'), `在拥车证到期后一个月内续期的逾期费。摩托车：${h.m(PARAMS.coe.motorcycleRenewalLateFee)}；公司用车、货车和公共服务车辆：${h.m(coeRenewalLateFee(9999))}。来源：陆路交通管理局拥车证续期页面。`, ['l', 'r'])}
 <p>与 PQP 相比，逾期费很少，但背后的规则很严格：拥车证到期后车辆就被注销，在续期完成前不能驾驶，超过一个月就必须报废或出口。收取的是到期月份的 PQP，而不是您最终付款那个月的 PQP。</p>
-<h2>怎样支付续期费用</h2>
+<h2>怎样支付拥车证续期费用</h2>
 <p>续期在 OneMotoring 网上办理，除午夜至早上6时外每天开放。个人账户持有人用 eNETS 借记付款，以银行设定的每日限额为准；PQP 超过银行限额时，可以用 SGQR PayNow 付款。您注销另一辆车所得的拥车证回扣，只要仍在十二个月有效期内，就可以用来抵付自己名下汽车的 PQP。如果回扣多于 PQP，应先把回扣兑现，再另行支付续期费用，因为抵付后剩下的余额会作废。</p>
 <h2>适用哪个 PQP、哪个类别</h2>
 <p>每辆车都按自己类别的 PQP 续期。原本用开放的E类拥车证注册的汽车，会按引擎和功率归入A类或B类续期；周末用车和非高峰时段用车支付与普通汽车相同的 PQP，续期后保留原来的身份。本页${mo('zh')}的数字是本站按陆路交通管理局规则计算的结果，计算方法见 ${h.a('pqp', 'PQP 页面')}，官方序列更新后即改用官方数字。如果您更想卖车或报废，${h.a('scrap-car', '报废指南')}列出能取回的金额和办理步骤。</p>`,

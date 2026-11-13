@@ -22,7 +22,7 @@ export default defineGuide({
     title: 'PARF Rebate 2026: New Schedule, Cap and Calculator by Age',
     description: 'PARF rebate in 2026 under the three schedules (COE before Feb 2023, to Feb 2026, from Feb 2026), the caps, who qualifies, how to encash, offset or transfer it.',
     h1: 'PARF rebate: what you get back on the ARF',
-    intro: `The share of the ARF a car returns when it is deregistered before ten years. Rules read on LTA’s pages on ${day(PARAMS_READ, 'en')}.`,
+    intro: `The PARF rebate is the share of the ARF a car returns when it is deregistered before ten years. Rules read on LTA’s pages on ${day(PARAMS_READ, 'en')}.`,
     resume: `The PARF rebate is a share of the ARF you actually paid, after any VES rebate or EEAI, returned when a car is deregistered before it turns ten. Three schedules exist, set by the exercise in which the COE was obtained. Before the second exercise of February 2023: ${pct(P.parf.pre2023.rates[0], 'en', 0)} up to five years, falling five points a year to ${pct(P.parf.pre2023.rates[5], 'en', 0)} in the tenth year, no cap. From then to the first exercise of February 2026: the same shares with a cap of ${en(P.parf.y2023to2026.cap)}. From the second exercise of February 2026: ${pct(P.parf.from2026.rates[0], 'en', 0)} down to ${pct(P.parf.from2026.rates[5], 'en', 0)}, capped at ${en(P.parf.from2026.cap)}. A car with ${en(ex.arf)} of ARF scrapped at ${ex.age} years returns ${en(at('pre2023'))}, ${en(at('y2023to2026'))} or ${en(at('from2026'))} under the three schedules. Nothing is paid after ten years, or for a car that has been laid up.`,
     faqs: [
       { q: 'Why was the PARF rebate cut in February 2026?', a: 'Budget 2026 lowered the schedule and the cap. LTA explained that PARF exists to encourage owners to replace cars early, so that the fleet becomes safer and less polluting, and that electric cars, now more common, reduce the need for that incentive. The new schedule applies only to cars whose COE was obtained from the second exercise of February 2026.' },
@@ -50,7 +50,7 @@ ${h.mini('coeRebate', { t: 'And the COE rebate on top', p: ['paid', 'months'] })
     title: 'PARF 回扣 2026：新比例、上限与按车龄计算',
     description: '2026年 PARF 回扣：三种比例（2023年2月前、2023年2月至2026年2月、2026年2月起取得的拥车证）、上限、谁有资格，以及如何兑现、抵付或转让回扣。',
     h1: 'PARF 回扣：取回部分附加注册费',
-    intro: `车辆在十年内注销时可取回的附加注册费比例。规则于${day(PARAMS_READ, 'zh')}读取自陆路交通管理局网页。`,
+    intro: `PARF 回扣是车辆在十年内注销时可取回的附加注册费比例。规则于${day(PARAMS_READ, 'zh')}读取自陆路交通管理局网页。`,
     resume: `PARF 回扣是您实际所付附加注册费（扣除车辆排放计划回扣或电动车早期采用奖励后）的一部分，在车辆满十年之前注销时退还。目前有三种比例，由取得拥车证的轮次决定。2023年2月第二轮之前：五年内 ${pct(P.parf.pre2023.rates[0], 'zh', 0)}，之后每年减五个百分点，第十年为 ${pct(P.parf.pre2023.rates[5], 'zh', 0)}，没有上限。之后至2026年2月第一轮：比例相同，上限 ${zh(P.parf.y2023to2026.cap)}。2026年2月第二轮起：从 ${pct(P.parf.from2026.rates[0], 'zh', 0)} 降到 ${pct(P.parf.from2026.rates[5], 'zh', 0)}，上限 ${zh(P.parf.from2026.cap)}。一辆附加注册费为 ${zh(ex.arf)} 的车，在车龄 ${ex.age} 年时报废，按三种比例分别可取回 ${zh(at('pre2023'))}、${zh(at('y2023to2026'))} 或 ${zh(at('from2026'))}。车龄超过十年，或曾经封存的车辆，没有 PARF 回扣。在计算器中输入已付附加注册费和注销时的车龄，即可得到您的回扣金额。`,
     faqs: [
       { q: '为什么2026年2月下调 PARF 回扣？', a: '2026年财政预算案下调了比例和上限。陆路交通管理局解释，PARF 的作用是鼓励车主提早换车，让车辆更安全、污染更少；而电动车越来越普遍，减少了这种鼓励的必要。新比例只适用于2026年2月第二轮起取得拥车证的汽车，之前的车辆维持原来的比例。具体以陆路交通管理局 OneMotoring 上的资料为准。' },

@@ -23,8 +23,8 @@ export default defineGuide({
     slug: 'coe-cat-b', nav: 'COE Category B', card: 'Larger cars, Cat E and the ARF effect',
     title: 'COE Cat B Price 2026: Latest Result, Cat E and History',
     description: `Category B COE in 2026: the ${en(B)} premium of the latest exercise, the gap with Category A and open Category E, the last 12 results, the record since 2010.`,
-    h1: 'COE Category B: larger cars',
-    intro: `Category B covers every car above the Category A limits. Latest result: ${en(B)} in the ${exName(LATEST, 'en')}, read on ${day(FETCHED, 'en')}.`,
+    h1: 'COE Category B: price for larger cars',
+    intro: `The Category B COE covers every car above the Category A limits. Latest price: ${en(B)} in the ${exName(LATEST, 'en')}, read on ${day(FETCHED, 'en')}.`,
     resume: `The Category B premium was ${en(B)} in the ${exName(LATEST, 'en')}, ${signed(change('B'), 'en')} on the ${exName(PREVIOUS, 'en')}, against ${en(A)} for Category A and ${en(E)} for the open Category E. Any car with an engine above ${num(P.catA.maxCc, 'en')} cc, or more than ${P.catA.maxKw} kW of power, needs a Category B certificate; so does an electric car above ${P.catA.evMaxKw} kW. In ${bAbove} of the last 12 exercises Category B cost more than Category A, and Category E closed at or above Category B in ${eAbove} of them. For a large car the ARF takes a much bigger share of the price: on a car with an OMV of ${en(CAR_B.omv)} in VES band C1, the ARF is ${en(CAR_B.u.netArf)}, ${pct(CAR_B.u.netArf / CAR_B.u.basicWithCoe, 'en', 0)} of the price before the dealer’s margin. The calculator above shows how often a given Category B reserve price would have won.`,
     faqs: [
       { q: 'Why is Category B sometimes cheaper than Category A?', a: `Each category has its own quota and its own bidders, so the two premiums are set separately. When the Category B quota grows faster than demand for large cars, or many Category A buyers rush in at once, the order flips for a few exercises. Over the last 12 exercises Category B was the more expensive one ${bAbove} times.` },
@@ -32,7 +32,7 @@ export default defineGuide({
       { q: 'What was the highest Category B COE price?', a: `The highest Category B premium in the series since 2010 is ${en(rec.value)}, reached in the ${exName(rec.ex, 'en')}. Over the last 24 exercises the premium ranged from ${en(s24.min)} to ${en(s24.max)}. Every result is in LTA’s open data set on data.gov.sg, which this site reads after each exercise.` },
     ],
     body: (h) => `
-<h2>Category B and Category E over the last 12 exercises</h2>
+<h2>Category B and Category E COE prices over the last 12 exercises</h2>
 ${h.table(['Exercise', 'Cat B', 'Cat E', 'B minus A', 'Cat B bids'], l12.map((e) => row(e, 'en')), 'Source: LTA via data.gov.sg (Singapore Open Data Licence 1.0).', ['l', 'r', 'r', 'r', 'r'])}
 <p>The fourth column shows how far Category B closed above or below Category A in the same exercise. The two car categories share the same calendar and are often bid for by the same dealers, yet their premiums can part by several thousand dollars from one exercise to the next. Category E, in the third column, is the reference point for dealers who need flexibility.</p>
 <h2>Which cars need a Category B certificate</h2>
@@ -51,7 +51,7 @@ ${h.mini('cost', { t: 'Cost per year of a larger car', p: ['omv', 'band'], d: { 
     title: 'B类拥车证价格 2026：最新结果、与E类比较及历史',
     description: `2026年B类拥车证：最新一轮价格 ${zh(B)}，与A类及开放E类的差距，最近12轮结果，以及2010年以来的最高纪录，读取自 data.gov.sg。`,
     h1: 'B类拥车证：较大的汽车',
-    intro: `B类涵盖所有超出A类上限的汽车。最新结果：${exName(LATEST, 'zh')} ${zh(B)}，读取于${day(FETCHED, 'zh')}。`,
+    intro: `B类拥车证涵盖所有超出A类上限的汽车。最新价格：${exName(LATEST, 'zh')} ${zh(B)}，读取于${day(FETCHED, 'zh')}。`,
     resume: `${exName(LATEST, 'zh')}B类拥车证价格为 ${zh(B)}，比${exName(PREVIOUS, 'zh')}变动 ${signed(change('B'), 'zh')}；同一轮A类为 ${zh(A)}，开放的E类为 ${zh(E)}。凡是引擎超过 ${num(P.catA.maxCc, 'zh')} cc，或功率超过 ${P.catA.maxKw} kW 的汽车，都需要B类拥车证；功率超过 ${P.catA.evMaxKw} kW 的纯电动车也一样。在最近12轮中，B类有 ${bAbove} 轮比A类贵，E类有 ${eAbove} 轮等于或高于B类。对大型车来说，附加注册费在车价中所占的比例大得多：一辆 OMV 为 ${zh(CAR_B.omv)}、排放等级 C1 的车，附加注册费为 ${zh(CAR_B.u.netArf)}，占车行加价前车价的 ${pct(CAR_B.u.netArf / CAR_B.u.basicWithCoe, 'zh', 0)}。页面顶部的计算器会显示某个B类保留价在过去有多少轮能够中标，可以选择回看半年、一年或两年，并与最新结果比较，看看自己的出价与市场相差多少。`,
     faqs: [
       { q: '为什么B类有时比A类便宜？', a: `每个类别都有自己的配额和投标者，两个价格是分开决定的。当B类配额增长快于大型车需求，或大批A类买家同时涌入时，几轮之内两者的高低就会对调。在最近12轮中，B类有 ${bAbove} 轮是较贵的一类，其余各轮则是A类较贵或两者相同。所以不能假定大车的拥车证一定更贵。` },

@@ -49,7 +49,7 @@ ${h.mini('renew', { t: 'What renewing would cost you', p: ['cat', 'years'] })}
     slug: 'pqp', nav: 'PQP（预定市场价格）', card: '每月拥车证续期价格',
     title: `${monthYear(PQP_NEXT.appliesTo, 'zh')} PQP：各类别预定市场价格与续期费用`,
     description: `${monthYear(PQP_NEXT.appliesTo, 'zh')}拥车证续期的 PQP（A至D类）、陆路交通管理局如何计算三个月平均值、最近12个月的官方数字，以及续期五年或十年各要付多少钱。`,
-    h1: 'PQP：预定市场价格',
+    h1: `${monthYear(PQP_NEXT.appliesTo, 'zh')} PQP：预定市场价格`,
     intro: `拥车证续期的价格，每月重新计算。${monthYear(PQP_NEXT.appliesTo, 'zh')}的数字为${label('zh')}；数据读取于${day(FETCHED, 'zh')}。`,
     resume: `${monthYear(PQP_NEXT.appliesTo, 'zh')}拥车证续期的预定市场价格为：A类 ${zh(PQP_NEXT.A)}，B类 ${zh(PQP_NEXT.B)}，C类 ${zh(PQP_NEXT.C)}，D类 ${zh(PQP_NEXT.D)}。这些数字是${label('zh')}：取${based('zh')}共 ${exIn} 轮竞标的配额价格，求移动平均，再向上取整到元，这正是陆路交通管理局采用的规则。用这个方法重算开放数据，自2002年以来每个月的官方 PQP 都分毫不差。A类数字比${monthYear(PQP_OFFICIAL_LAST, 'zh')}的官方 PQP 变动 ${signed(PQP_NEXT.A - PQP_OFFICIAL.A, 'zh')}。续期十年支付 PQP 全额，A类为 ${zh(renewalCost(PQP_NEXT.A, 10))}；续期五年支付一半并向上取整，为 ${zh(renewalCost(PQP_NEXT.A, 5))}。由于是三个月的平均值，A类 PQP 与最新结果相差 ${zh(Math.abs(gapA))}，在价格上升时偏低，在价格下跌时偏高。`,
     faqs: [
@@ -73,7 +73,7 @@ ${h.mini('renew', { t: '续期要花多少钱', p: ['cat', 'years'] })}
 <p>每个月的 PQP 在上个月第二轮竞标结束后就已确定。拥车证在某个月到期的车主，有两种准时续期的方法。在到期月份续期，按当月的 PQP 计算，新期限从旧拥车证结束的次日开始。提早一个月续期，按上个月的 PQP 计算，在价格上升时可能比较划算，但新期限要从下个月第一天开始，旧拥车证剩下的天数就会作废。到期后续期也可以，但只限一个月内，要付到期月份的 PQP 再加逾期费。</p>
 <h2>没有竞标的月份</h2>
 <p>平均值只计算有举行竞标的月份。2020年4月、5月和6月暂停竞标时，陆路交通管理局以2020年1月、2月和3月的结果，计算2020年5月、6月和7月的 PQP。本页所用的计算遵循同一规则，这也是它能与官方序列逐月吻合的原因之一。</p>
-<h2>数字的来源</h2>
+<h2>${monthYear(PQP_NEXT.appliesTo, 'zh')} PQP 数字的来源</h2>
 <p>官方月度序列来自新加坡统计局在 ${h.src('dgs-pqp', 'data.gov.sg')} 发布的数据集（数据来源：陆路交通管理局），本站计算所用的竞标结果来自${h.src('dgs-coe', '拥车证竞标结果')}数据集，两者都依据${h.src('sodl', '新加坡开放数据许可证')}使用。续期规则见陆路交通管理局的${h.src('lta-renewal', '拥车证续期页面')}。当${monthYear(PQP_NEXT.appliesTo, 'zh')}的官方数字出现在开放数据中时，更新程序会把它与本站的计算比较，一旦不同就会停止，所以错误的数字不会悄悄出现在本页上。</p>`,
   },
 });
