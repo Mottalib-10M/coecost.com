@@ -1,13 +1,13 @@
 {
  "source": "https://data.gov.sg/datasets/d_69b3380ad7e51aff3a7dcc84eba52b8a/view",
  "licence": "https://data.gov.sg/open-data-licence",
- "attribution": "Contains information from COE Bidding Results / Prices (Land Transport Authority) accessed on 2026-11-10 from data.gov.sg which is made available under the terms of the Singapore Open Data Licence version 1.0 https://data.gov.sg/open-data-licence",
- "fetched": "2026-11-10",
+ "attribution": "Contains information from COE Bidding Results / Prices (Land Transport Authority) accessed on 2026-11-18 from data.gov.sg which is made available under the terms of the Singapore Open Data Licence version 1.0 https://data.gov.sg/open-data-licence",
+ "fetched": "2026-11-18",
  "latest": {
   "month": "2026-11",
-  "round": 1
+  "round": 2
  },
- "count": 399,
+ "count": 400,
  "exercises": [
   {
    "month": "2010-01",
@@ -14370,6 +14370,42 @@
      "success": 282,
      "bids": 506,
      "premium": 135998
+    }
+   }
+  },
+  {
+   "month": "2026-11",
+   "round": 2,
+   "cats": {
+    "A": {
+     "quota": 1193,
+     "success": 1130,
+     "bids": 1464,
+     "premium": 130100
+    },
+    "B": {
+     "quota": 951,
+     "success": 951,
+     "bids": 1066,
+     "premium": 125600
+    },
+    "C": {
+     "quota": 314,
+     "success": 314,
+     "bids": 504,
+     "premium": 91790
+    },
+    "D": {
+     "quota": 506,
+     "success": 499,
+     "bids": 635,
+     "premium": 10489
+    },
+    "E": {
+     "quota": 266,
+     "success": 225,
+     "bids": 466,
+     "premium": 136000
     }
    }
   }
